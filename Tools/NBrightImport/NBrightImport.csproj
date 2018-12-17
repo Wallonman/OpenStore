@@ -123,12 +123,10 @@
     <Compile Include="Logger\ILog.cs" />
     <Compile Include="Logger\Log4NetLogger.cs" />
     <Compile Include="Logger\LoggerBase.cs" />
-    <Compile Include="Model\MainWindowEntity.cs" />
     <Compile Include="Model\MultiWindowEntity.cs" />
     <Compile Include="Model\Store\Category.cs" />
     <Compile Include="Model\Store\Product.cs" />
     <Compile Include="Model\Store\Store.cs" />
-    <Compile Include="Model\Window\MainWindowEntity.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
@@ -196,6 +194,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="NBrightImport.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Model\Window\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

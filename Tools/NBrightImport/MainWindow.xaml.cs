@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using ZIndex.DNN.NBrightImport.Import;
 using ZIndex.DNN.NBrightImport.Logger;
 using ZIndex.DNN.NBrightImport.Model;
+using ZIndex.DNN.NBrightImport.Model.Window;
 using ZIndex.DNN.NBrightImport.Properties;
 
 namespace ZIndex.DNN.NBrightImport
@@ -14,14 +15,14 @@ namespace ZIndex.DNN.NBrightImport
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly MultiWindowEntity _entity;
+        private readonly MainWindowEntity _entity;
         private readonly ILog _log = new LoggerBase(typeof(MainWindow)).Logger;
 
         public MainWindow()
         {
             InitializeComponent();
 
-            DataContext = _entity = new MultiWindowEntity
+            DataContext = _entity = new MainWindowEntity
             {
                 UnitCost = Settings.Default.UnitCost.ToString(CultureInfo.InvariantCulture),
                 Culture = Settings.Default.Culture,

@@ -2,9 +2,9 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using ZIndex.DNN.NBrightImport.Properties;
 
-namespace ZIndex.DNN.NBrightImport.Model
+namespace ZIndex.DNN.NBrightImport.Model.Window
 {
-    internal class MultiWindowEntity : INotifyPropertyChanged
+    internal class MainWindowEntity : INotifyPropertyChanged
     {
         private string _srcPath;
 

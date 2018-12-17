@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BA4DD530-941F-4C81-A2DF-19A2FD9B5222}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ZIndex.DNN.NBrightImport.UnitTests</RootNamespace>
+    <AssemblyName>NBrightImport.UnitTests</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Castle.Core.4.3.1\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Moq, Version=4.10.0.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Moq.4.10.1\lib\net45\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=3.5.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NUnit.3.5.0\lib\net45\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Runtime.CompilerServices.Unsafe.4.5.0\lib\netstandard1.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Threading.Tasks.Extensions.4.5.1\lib\portable-net45+win8+wp8+wpa81\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="NBStoreConnect\FolderParser\CategoriesParserTests.cs" />
+    <Compile Include="NBStoreConnect\FolderParser\McpaquotStoreParserTests.cs" />
+    <Compile Include="NBStoreConnect\FolderParser\ProductsParserTests.cs" />
+    <Compile Include="NBStoreConnect\FolderParser\StoreParserTests.cs" />
+    <Compile Include="NBStoreConnect\ImportFileGeneratorTests\GenerateImportFileTests.cs" />
+    <Compile Include="NBStoreConnect\ImportFileGeneratorTests\ConverterTests.cs" />
+    <Compile Include="NBStoreConnect\ImportManager\TestGenerateImportFile.cs" />
+    <Compile Include="NBStoreConnect\ImportManager\TestGenerateImportFileWithListOfProducts.cs" />
+    <Compile Include="NBStoreConnect\ImportManager\TestGenerateMultiImportFiles.cs" />
+    <Compile Include="NBStoreConnect\ImportManager\TestGenerateMultiImportFilesRecursive.cs" />
+    <Compile Include="NBStoreConnect\ImportManager\TestSimpleProductNames.cs" />
+    <Compile Include="NBStoreConnect\ZipFileGeneratorTests\GenerateZipFileTests.cs" />
+    <Compile Include="TestBase.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="NBStoreConnect\ImportManager\Root\Path1\Path11\111.JPG">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="NBStoreConnect\ImportManager\Root\Path1\Path11\112.JPG">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="NBStoreConnect\ImportManager\Root\Path1\Path12\121.JPG">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="NBStoreConnect\ImportManager\Root\Path1\Path12\122.JPG">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="NBStoreConnect\ImportManager\Root\Path2\21.JPG">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="NBStoreConnect\ImportManager\Root\Path2\22.JPG">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Content Include="NBStoreConnect\StoreSamples\Dance%27s Passion 2017\Gala 2017\Partie 1\01. Les bougies\DP 2017_BEB_4083.JPG">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NBStoreConnect\StoreSamples\Dance%27s Passion 2017\Gala 2017\Partie 1\01. Les bougies\DP 2017_BEB_4084.JPG">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NBStoreConnect\StoreSamples\Dance%27s Passion 2017\Gala 2017\Partie 1\01. Les bougies\DP 2017_BEB_4085.JPG">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NBStoreConnect\StoreSamples\Dance%27s Passion 2017\Gala 2017\Partie 1\01. Les bougies\DP 2017_BEB_4086.JPG">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NBStoreConnect\StoreSamples\Dance%27s Passion 2017\Gala 2017\Partie 1\01. Les bougies\DP 2017_BEB_4087.JPG">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NBStoreConnect\StoreSamples\Dance%27s Passion 2017\Gala 2017\Partie 1\02. Incertitude\DP 2017_BEB_4088.JPG">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NBStoreConnect\StoreSamples\Dance%27s Passion 2017\Gala 2017\Partie 1\02. Incertitude\DP 2017_BEB_4089.JPG">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NBStoreConnect\StoreSamples\Dance%27s Passion 2017\Gala 2017\Partie 1\02. Incertitude\DP 2017_PA7_3080.JPG">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NBStoreConnect\StoreSamples\Dance%27s Passion 2017\Gala 2017\Partie 1\02. Incertitude\DP 2017_PA7_3081.JPG">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NBStoreConnect\StoreSamples\Dance%27s Passion 2017\Gala 2017\Partie 1\02. Incertitude\DP 2017_PA7_3082.JPG">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NBStoreConnect\StoreSamples\Root\0.JPG">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NBStoreConnect\StoreSamples\Root\Path1\1.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NBStoreConnect\StoreSamples\Root\Path1\Path11\111.JPG">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NBStoreConnect\StoreSamples\Root\Path1\Path11\112.JPG">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NBStoreConnect\StoreSamples\Root\Path1\Path12\121.JPG">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NBStoreConnect\StoreSamples\Root\Path1\Path12\122.JPG">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NBStoreConnect\StoreSamples\Root\Path2\21.JPG">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NBStoreConnect\StoreSamples\Root\Path2\22.JPG">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NBStoreConnect\Pictures\Pictures.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="NBStoreConnect\Pictures\100_1116.JPG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NBStoreConnect\Pictures\100_1117.JPG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NBrightImport\NBrightImport.csproj">
+      <Project>{e5046277-3125-40ef-a2f2-ebb4a8176ae1}</Project>
+      <Name>NBrightImport</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

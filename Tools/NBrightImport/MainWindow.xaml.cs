@@ -61,6 +61,7 @@ namespace ZIndex.DNN.NBrightImport
                 var importManager = new ImportManager(new StoreParser(new CategoriesParser(), new ProductsParser()),
                     new ImportFileGenerator(new Converter()), new ZipFileGenerator());
 
+                // todo: put this is a separate thread
                 importManager.GenerateImportFiles(_entity.SrcPath
                     , CultureInfo.GetCultureInfo(_entity.Culture)
                     , _entity.ImageBasePath // imageBasePath

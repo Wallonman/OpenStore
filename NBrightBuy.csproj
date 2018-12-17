@@ -50,16 +50,16 @@
       <HintPath>..\..\..\bin\DotNetNuke.Web.DDRMenu.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ApplicationBlocks.Data">
-      <HintPath>..\..\..\bin\Microsoft.ApplicationBlocks.Data.dll</HintPath>
+      <HintPath>..\..\..\..\Temp\DNN\NBStore\sourceCode\Lib\Microsoft.ApplicationBlocks.Data.dll</HintPath>
     </Reference>
     <Reference Include="NBrightCore">
-      <HintPath>..\..\..\bin\NBrightCore.dll</HintPath>
+      <HintPath>..\..\..\DNN\bin\NBrightCore.dll</HintPath>
     </Reference>
     <Reference Include="NBrightDNN">
-      <HintPath>..\..\..\bin\NBrightDNN.dll</HintPath>
+      <HintPath>..\..\..\DNN\bin\NBrightDNN.dll</HintPath>
     </Reference>
     <Reference Include="RazorEngine">
-      <HintPath>..\..\..\bin\RazorEngine.dll</HintPath>
+      <HintPath>..\..\..\DNN\bin\RazorEngine.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -68,9 +68,8 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\bin\System.Web.Razor.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\..\..\DNN\bin\System.Web.Razor.dll</HintPath>
     </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.XML" />

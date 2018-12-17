@@ -35,19 +35,19 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DotNetNuke">
-      <HintPath>..\..\..\..\..\bin\DotNetNuke.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Temp\DNN\NBStore\sourceCode\Lib\DotNetNuke.dll</HintPath>
     </Reference>
     <Reference Include="NBrightCore, Version=3.4.0.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\bin\NBrightCore.dll</HintPath>
+      <HintPath>..\..\..\..\..\DNN\bin\NBrightCore.dll</HintPath>
     </Reference>
     <Reference Include="NBrightDNN, Version=8.0.0.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\bin\NBrightDNN.dll</HintPath>
+      <HintPath>..\..\..\..\..\DNN\bin\NBrightDNN.dll</HintPath>
     </Reference>
     <Reference Include="RazorEngine, Version=3.7.7.0, Culture=neutral, PublicKeyToken=9ee697374c7e744a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\bin\RazorEngine.dll</HintPath>
+      <HintPath>..\..\..\..\..\DNN\bin\RazorEngine.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

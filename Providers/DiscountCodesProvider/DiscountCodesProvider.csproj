@@ -30,15 +30,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DotNetNuke, Version=7.2.0.607, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\bin\DotNetNuke.dll</HintPath>
+    <Reference Include="DotNetNuke">
+      <HintPath>..\..\..\..\..\..\Temp\DNN\NBStore\sourceCode\Lib\DotNetNuke.dll</HintPath>
     </Reference>
     <Reference Include="NBrightCore">
-      <HintPath>..\..\..\..\..\bin\NBrightCore.dll</HintPath>
+      <HintPath>..\..\..\..\..\DNN\bin\NBrightCore.dll</HintPath>
     </Reference>
     <Reference Include="NBrightDNN">
-      <HintPath>..\..\..\..\..\bin\NBrightDNN.dll</HintPath>
+      <HintPath>..\..\..\..\..\DNN\bin\NBrightDNN.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

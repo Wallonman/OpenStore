@@ -2,16 +2,17 @@
 using System.IO;
 using System.Linq;
 using System.Xml.Linq;
+using NBrightDNN;
 using ZIndex.DNN.NBrightImport.Extensions;
 using ZIndex.DNN.NBrightImport.Model.Store;
 
 namespace ZIndex.DNN.NBrightImport.Import
 {
-    public class ImportFileGenerator : IImportFileGenerator
+    public class ImportV2FileGenerator : IImportFileGenerator
     {
         private readonly IConverter _converter;
 
-        public ImportFileGenerator(IConverter converter)
+        public ImportV2FileGenerator(IConverter converter)
         {
             _converter = converter;
         }
@@ -28,6 +29,13 @@ namespace ZIndex.DNN.NBrightImport.Import
 
             // initialize the id for models and images (use a value > product or category id)
             var id = store.Products.Max(product => product.Id) + store.Categories.Max(category => category.Id);
+
+
+/*
+            var nbi = new NBrightInfo(false);
+            nbi.Lang = store.Culture.ToString();
+            nbi.
+*/
 
 
             var root =

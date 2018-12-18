@@ -14,7 +14,7 @@ namespace ZIndex.DNN.NBrightImport.UnitTests.ImportFileGeneratorTests
     public class ImportFileGeneratorTests : TestBase
     {
         private XDocument _actual;
-        private ImportFileGenerator _generator;
+        private ImportV2FileGenerator _generator;
         private Store _store;
         private List<Category> _categories;
         private Category _rootCategory;
@@ -62,7 +62,7 @@ namespace ZIndex.DNN.NBrightImport.UnitTests.ImportFileGeneratorTests
             TextWriter writer = new StringWriter();
 
             // generate using the generator
-            _generator = new ImportFileGenerator(_converter.Object);
+            _generator = new ImportV2FileGenerator(_converter.Object);
             _generator.Generate(writer, _store);
 
             // load the actual result

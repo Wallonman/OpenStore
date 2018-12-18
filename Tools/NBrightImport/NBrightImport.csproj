@@ -85,6 +85,9 @@
     <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="NBrightDNN">
+      <HintPath>..\..\..\..\..\DNN\bin\NBrightDNN.dll</HintPath>
+    </Reference>
     <Reference Include="SharpZipLib">
       <HintPath>..\..\..\..\..\..\Temp\DNN\NBStore\sourceCode\Lib\SharpZipLib.dll</HintPath>
     </Reference>
@@ -115,8 +118,9 @@
     <Compile Include="Import\ICategoriesParser.cs" />
     <Compile Include="Import\IConverter.cs" />
     <Compile Include="Import\IImportFileGenerator.cs" />
-    <Compile Include="Import\ImportFileGenerator.cs" />
+    <Compile Include="Import\ImportV2FileGenerator.cs" />
     <Compile Include="Import\ImportManager.cs" />
+    <Compile Include="Import\ImportV4FileGenerator.cs" />
     <Compile Include="Import\IProductsParser.cs" />
     <Compile Include="Import\IStoreParser.cs" />
     <Compile Include="Import\IZipFileGenerator.cs" />

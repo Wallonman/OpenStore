@@ -6,7 +6,7 @@ using NUnit.Framework;
 using ZIndex.DNN.NBrightImport.Import;
 using ZIndex.DNN.NBrightImport.Model.Store;
 
-namespace ZIndex.DNN.NBrightImport.UnitTests.NBStoreConnect.FolderParser
+namespace ZIndex.DNN.NBrightImport.UnitTests.FolderParser
 {
     [TestFixture]
     public class McpaquotStoreParserTests : TestBase
@@ -23,13 +23,13 @@ namespace ZIndex.DNN.NBrightImport.UnitTests.NBStoreConnect.FolderParser
         {
             base.TestSetup();
 
-            StoreFiles = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"NBrightImport\StoreSamples\Dance's Passion 2017");
+            StoreFiles = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"StoreSamples\Dance's Passion 2017");
 
             _productParser = new ProductsParser();
             _categoriesParser = new CategoriesParser();
 
             _actualCategories = _categoriesParser.Parse(StoreFiles);
-            _actualProducts = _productParser.Parse(StoreFiles, _actualCategories);//Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"NBrightImport\FolderParser\Root"), _categories);
+            _actualProducts = _productParser.Parse(StoreFiles, _actualCategories);//Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"FolderParser\Root"), _categories);
         }
 
         [TearDown]

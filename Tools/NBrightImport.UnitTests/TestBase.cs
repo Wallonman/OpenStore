@@ -35,7 +35,7 @@ namespace ZIndex.DNN.NBrightImport.UnitTests
             Logger.Info("--- Begin test -------------------------------------------------");
             Logger.Debug("--- Initializing test at {0}", _startAt.ToLongTimeString());
 
-            StoreFiles = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"NBrightImport\StoreSamples\Root");
+            StoreFiles = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"StoreSamples\Root");
             Logger.Debug("Store files located @ {0}", StoreFiles);
 
             Logger.Info("----------- End Initialize Tests -----------");

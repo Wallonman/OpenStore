@@ -3,7 +3,7 @@ using System.Reflection;
 using NUnit.Framework;
 using ZIndex.DNN.NBrightImport.Import;
 
-namespace ZIndex.DNN.NBrightImport.UnitTests.NBStoreConnect.ZipFileGeneratorTests
+namespace ZIndex.DNN.NBrightImport.UnitTests.ZipFileGeneratorTests
 {
     [TestFixture]
     public class GenerateZipFileTests : TestBase

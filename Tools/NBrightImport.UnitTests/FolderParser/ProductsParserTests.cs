@@ -3,7 +3,7 @@ using System.Linq;
 using NUnit.Framework;
 using ZIndex.DNN.NBrightImport.Model.Store;
 
-namespace ZIndex.DNN.NBrightImport.UnitTests.NBStoreConnect.FolderParser
+namespace ZIndex.DNN.NBrightImport.UnitTests.FolderParser
 {
     [TestFixture]
     public class ProductsParserTests : TestBase
@@ -43,7 +43,7 @@ namespace ZIndex.DNN.NBrightImport.UnitTests.NBStoreConnect.FolderParser
                 new Category {Name = "Path2", Id = 2},
             };
 
-            _actualProducts = _parser.Parse(StoreFiles, _categories);//Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"NBrightImport\FolderParser\Root"), _categories);
+            _actualProducts = _parser.Parse(StoreFiles, _categories);//Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"FolderParser\Root"), _categories);
         }
 
         [TearDown]

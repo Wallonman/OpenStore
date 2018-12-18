@@ -8,7 +8,7 @@ using NUnit.Framework;
 using ZIndex.DNN.NBrightImport.Import;
 using ZIndex.DNN.NBrightImport.Model.Store;
 
-namespace ZIndex.DNN.NBrightImport.UnitTests.NBStoreConnect.ImportFileGeneratorTests
+namespace ZIndex.DNN.NBrightImport.UnitTests.ImportFileGeneratorTests
 {
     [TestFixture]
     public class ImportFileGeneratorTests : TestBase

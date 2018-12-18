@@ -61,113 +61,82 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="NBStoreConnect\FolderParser\CategoriesParserTests.cs" />
-    <Compile Include="NBStoreConnect\FolderParser\McpaquotStoreParserTests.cs" />
-    <Compile Include="NBStoreConnect\FolderParser\ProductsParserTests.cs" />
-    <Compile Include="NBStoreConnect\FolderParser\StoreParserTests.cs" />
-    <Compile Include="NBStoreConnect\ImportFileGeneratorTests\GenerateImportFileTests.cs" />
-    <Compile Include="NBStoreConnect\ImportFileGeneratorTests\ConverterTests.cs" />
-    <Compile Include="NBStoreConnect\ImportManager\TestGenerateImportFile.cs" />
-    <Compile Include="NBStoreConnect\ImportManager\TestGenerateImportFileWithListOfProducts.cs" />
-    <Compile Include="NBStoreConnect\ImportManager\TestGenerateMultiImportFiles.cs" />
-    <Compile Include="NBStoreConnect\ImportManager\TestGenerateMultiImportFilesRecursive.cs" />
-    <Compile Include="NBStoreConnect\ImportManager\TestSimpleProductNames.cs" />
-    <Compile Include="NBStoreConnect\ZipFileGeneratorTests\GenerateZipFileTests.cs" />
+    <Compile Include="FolderParser\CategoriesParserTests.cs" />
+    <Compile Include="FolderParser\McpaquotStoreParserTests.cs" />
+    <Compile Include="FolderParser\ProductsParserTests.cs" />
+    <Compile Include="FolderParser\StoreParserTests.cs" />
+    <Compile Include="ImportFileGeneratorTests\GenerateImportFileTests.cs" />
+    <Compile Include="ImportFileGeneratorTests\ConverterTests.cs" />
+    <Compile Include="ZipFileGeneratorTests\GenerateZipFileTests.cs" />
     <Compile Include="TestBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="NBStoreConnect\ImportManager\Root\Path1\Path11\111.JPG">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="NBStoreConnect\ImportManager\Root\Path1\Path11\112.JPG">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="NBStoreConnect\ImportManager\Root\Path1\Path12\121.JPG">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="NBStoreConnect\ImportManager\Root\Path1\Path12\122.JPG">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="NBStoreConnect\ImportManager\Root\Path2\21.JPG">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="NBStoreConnect\ImportManager\Root\Path2\22.JPG">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <Content Include="NBStoreConnect\StoreSamples\Dance%27s Passion 2017\Gala 2017\Partie 1\01. Les bougies\DP 2017_BEB_4083.JPG">
+    <Content Include="StoreSamples\Dance%27s Passion 2017\Gala 2017\Partie 1\01. Les bougies\DP 2017_BEB_4083.JPG">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="NBStoreConnect\StoreSamples\Dance%27s Passion 2017\Gala 2017\Partie 1\01. Les bougies\DP 2017_BEB_4084.JPG">
+    <Content Include="StoreSamples\Dance%27s Passion 2017\Gala 2017\Partie 1\01. Les bougies\DP 2017_BEB_4084.JPG">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="NBStoreConnect\StoreSamples\Dance%27s Passion 2017\Gala 2017\Partie 1\01. Les bougies\DP 2017_BEB_4085.JPG">
+    <Content Include="StoreSamples\Dance%27s Passion 2017\Gala 2017\Partie 1\01. Les bougies\DP 2017_BEB_4085.JPG">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="NBStoreConnect\StoreSamples\Dance%27s Passion 2017\Gala 2017\Partie 1\01. Les bougies\DP 2017_BEB_4086.JPG">
+    <Content Include="StoreSamples\Dance%27s Passion 2017\Gala 2017\Partie 1\01. Les bougies\DP 2017_BEB_4086.JPG">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="NBStoreConnect\StoreSamples\Dance%27s Passion 2017\Gala 2017\Partie 1\01. Les bougies\DP 2017_BEB_4087.JPG">
+    <Content Include="StoreSamples\Dance%27s Passion 2017\Gala 2017\Partie 1\01. Les bougies\DP 2017_BEB_4087.JPG">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="NBStoreConnect\StoreSamples\Dance%27s Passion 2017\Gala 2017\Partie 1\02. Incertitude\DP 2017_BEB_4088.JPG">
+    <Content Include="StoreSamples\Dance%27s Passion 2017\Gala 2017\Partie 1\02. Incertitude\DP 2017_BEB_4088.JPG">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="NBStoreConnect\StoreSamples\Dance%27s Passion 2017\Gala 2017\Partie 1\02. Incertitude\DP 2017_BEB_4089.JPG">
+    <Content Include="StoreSamples\Dance%27s Passion 2017\Gala 2017\Partie 1\02. Incertitude\DP 2017_BEB_4089.JPG">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="NBStoreConnect\StoreSamples\Dance%27s Passion 2017\Gala 2017\Partie 1\02. Incertitude\DP 2017_PA7_3080.JPG">
+    <Content Include="StoreSamples\Dance%27s Passion 2017\Gala 2017\Partie 1\02. Incertitude\DP 2017_PA7_3080.JPG">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="NBStoreConnect\StoreSamples\Dance%27s Passion 2017\Gala 2017\Partie 1\02. Incertitude\DP 2017_PA7_3081.JPG">
+    <Content Include="StoreSamples\Dance%27s Passion 2017\Gala 2017\Partie 1\02. Incertitude\DP 2017_PA7_3081.JPG">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="NBStoreConnect\StoreSamples\Dance%27s Passion 2017\Gala 2017\Partie 1\02. Incertitude\DP 2017_PA7_3082.JPG">
+    <Content Include="StoreSamples\Dance%27s Passion 2017\Gala 2017\Partie 1\02. Incertitude\DP 2017_PA7_3082.JPG">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="NBStoreConnect\StoreSamples\Root\0.JPG">
+    <Content Include="StoreSamples\Root\0.JPG">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="NBStoreConnect\StoreSamples\Root\Path1\1.jpg">
+    <Content Include="StoreSamples\Root\Path1\1.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="NBStoreConnect\StoreSamples\Root\Path1\Path11\111.JPG">
+    <Content Include="StoreSamples\Root\Path1\Path11\111.JPG">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="NBStoreConnect\StoreSamples\Root\Path1\Path11\112.JPG">
+    <Content Include="StoreSamples\Root\Path1\Path11\112.JPG">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="NBStoreConnect\StoreSamples\Root\Path1\Path12\121.JPG">
+    <Content Include="StoreSamples\Root\Path1\Path12\121.JPG">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="NBStoreConnect\StoreSamples\Root\Path1\Path12\122.JPG">
+    <Content Include="StoreSamples\Root\Path1\Path12\122.JPG">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="NBStoreConnect\StoreSamples\Root\Path2\21.JPG">
+    <Content Include="StoreSamples\Root\Path2\21.JPG">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="NBStoreConnect\StoreSamples\Root\Path2\22.JPG">
+    <Content Include="StoreSamples\Root\Path2\22.JPG">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="NBStoreConnect\Pictures\Pictures.zip">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="NBStoreConnect\Pictures\100_1116.JPG">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="NBStoreConnect\Pictures\100_1117.JPG">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NBrightImport\NBrightImport.csproj">
       <Project>{e5046277-3125-40ef-a2f2-ebb4a8176ae1}</Project>
       <Name>NBrightImport</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ImportManager\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -6,7 +6,7 @@ using NUnit.Framework;
 using ZIndex.DNN.NBrightImport.Import;
 using ZIndex.DNN.NBrightImport.Model.Store;
 
-namespace ZIndex.DNN.NBrightImport.UnitTests.NBStoreConnect.FolderParser
+namespace ZIndex.DNN.NBrightImport.UnitTests.FolderParser
 {
     [TestFixture]
     public class StoreParserTests : TestBase

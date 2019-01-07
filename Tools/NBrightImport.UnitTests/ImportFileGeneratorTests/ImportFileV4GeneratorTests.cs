@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Xml.Linq;
 using Moq;
+using NBrightDNN;
 using NUnit.Framework;
 using ZIndex.DNN.NBrightImport.Import;
 using ZIndex.DNN.NBrightImport.Model.Store;
@@ -11,15 +13,14 @@ using ZIndex.DNN.NBrightImport.Model.Store;
 namespace ZIndex.DNN.NBrightImport.UnitTests.ImportFileGeneratorTests
 {
     [TestFixture]
-    public class ImportFileGeneratorTests : TestBase
+    public class ImportFileV4GeneratorTests : TestBase
     {
         private XDocument _actual;
-        private ImportV2FileGenerator _generator;
+        private ImportV4FileGenerator _generator;
         private Store _store;
         private List<Category> _categories;
         private Category _rootCategory;
         private Category _childCategory;
-        private XElement _firstProduct;
         private Mock<IConverter> _converter;
 
         #region Setup/Teardown
@@ -58,11 +59,32 @@ namespace ZIndex.DNN.NBrightImport.UnitTests.ImportFileGeneratorTests
                 .Returns(@"c:\temp\image.jpg");
             _converter.Setup(converter => converter.ToImageBaseUrl(It.IsAny<Product>(), It.IsAny<string>()))
                 .Returns("/url/image.jpg");
+            _converter.Setup(converter => converter.CreateCategory(It.IsAny<Category>(), It.IsAny<Store>()))
+                .Returns(new NBrightInfo(true)
+                {
+                    PortalId = 0, //todo: add portalId in store
+                    ItemID = 1,
+/*
+                    GUIDKey = "",
+                    Lang = CultureInfo.CurrentCulture.ToString(),
+                    ModifiedDate = DateTime.Now,
+                    ModuleId = -1,
+                    ParentItemId = 0,
+                    RowCount = 0,
+                    TextData = "",
+                    TypeCode = "CATEGORY",
+                    UserId = 0,
+                    XMLData = "",
+                    //XMLDoc = 
+                    XrefItemId = 0,
+*/
+
+                });
 
             TextWriter writer = new StringWriter();
 
             // generate using the generator
-            _generator = new ImportV2FileGenerator(_converter.Object);
+            _generator = new ImportV4FileGenerator(_converter.Object);
             _generator.Generate(writer, _store);
 
             // load the actual result
@@ -70,8 +92,6 @@ namespace ZIndex.DNN.NBrightImport.UnitTests.ImportFileGeneratorTests
 
             Assert.IsNotNull(_actual);
             Logger.Debug(_actual.ToString());
-
-            _firstProduct = _actual.Descendants("NB_Store_ProductsInfo").FirstOrDefault();
 
         }
 
@@ -92,8 +112,9 @@ namespace ZIndex.DNN.NBrightImport.UnitTests.ImportFileGeneratorTests
         [Test]
         public void ImportCategoriesCountIsValid()
         {
-            Assert.AreEqual(2, _actual.Descendants("NB_Store_CategoriesInfo").Count());
+            _converter.Verify(converter => converter.CreateCategory(It.IsAny<Category>(), It.IsAny<Store>()), Times.Exactly(2));
         }
+        /*
 
         [Test]
         public void ImportRootCategoryNameIsValid()
@@ -119,7 +140,7 @@ namespace ZIndex.DNN.NBrightImport.UnitTests.ImportFileGeneratorTests
         {
             Assert.AreEqual("/ImageBaseUrl/CategoryImage..jpg", _actual.Descendants("NB_Store_CategoriesInfo").First().Element("ImageURL").Value);
         }
-*/
+#1#
 
         [Test]
         public void ImportContainsTwoProducts()
@@ -127,35 +148,7 @@ namespace ZIndex.DNN.NBrightImport.UnitTests.ImportFileGeneratorTests
             Assert.AreEqual(2, _actual.Descendants("NB_Store_ProductsInfo").Count());
         }
 
-        [Test]
-        public void ImportProductExists()
-        {
-            Assert.IsNotNull(_firstProduct);
-        }
 
-        [Test]
-        public void ImportProductNameIsValid()
-        {
-            Assert.AreEqual("prod1", _firstProduct.Element("ProductName").Value);
-        }
-
-        [Test]
-        public void ImportProductLangIsValid()
-        {
-            Assert.AreEqual("fr-BE", _firstProduct.Element("Lang").Value);
-        }
-
-        [Test]
-        public void ImportProductIsDeletedIsFalse()
-        {
-            Assert.AreEqual("false", _firstProduct.Element("IsDeleted").Value);
-        }
-
-        [Test]
-        public void ImportProductIsHiddenIsFalse()
-        {
-            Assert.AreEqual("false", _firstProduct.Element("IsHidden").Value);
-        }
 
         [Test]
         public void ImportProductModelHasValidId()
@@ -212,12 +205,6 @@ namespace ZIndex.DNN.NBrightImport.UnitTests.ImportFileGeneratorTests
         }
 
         [Test]
-        public void ImportProductCategoryHasValidProductID()
-        {
-            Assert.AreEqual("1", _firstProduct.Element("ProductID").Value);
-        }
-
-        [Test]
         public void ImportProductCategoryHasValidCategoryID()
         {
             Assert.AreEqual("100", _actual.Descendants("P").FirstOrDefault().Descendants("CategoryID").First().Value);
@@ -239,6 +226,7 @@ namespace ZIndex.DNN.NBrightImport.UnitTests.ImportFileGeneratorTests
             // all Lang element must be fr-BE
             langs.ToList().ForEach(element => Assert.AreEqual("fr-BE", element.Value));
         }
+*/
 
 
     }

@@ -1,4 +1,5 @@
-﻿using ZIndex.DNN.NBrightImport.Model.Store;
+﻿using NBrightDNN;
+using ZIndex.DNN.NBrightImport.Model.Store;
 
 namespace ZIndex.DNN.NBrightImport.Import
 {
@@ -19,5 +20,8 @@ namespace ZIndex.DNN.NBrightImport.Import
         /// <param name="imageBaseUrl">The image base URL.</param>
         /// <returns></returns>
         string ToImageBaseUrl(Product product, string imageBaseUrl);
+
+        NBrightInfo CreateCategory(Category category, Store store);
+        NBrightInfo CreateCategoryLang(Category category, Store store);
     }
 }

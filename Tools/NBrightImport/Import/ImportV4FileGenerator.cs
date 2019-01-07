@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
+using System.Xml;
 using System.Xml.Linq;
 using NBrightDNN;
 using ZIndex.DNN.NBrightImport.Extensions;
@@ -30,29 +33,16 @@ namespace ZIndex.DNN.NBrightImport.Import
             // initialize the id for models and images (use a value > product or category id)
             var id = store.Products.Max(product => product.Id) + store.Categories.Max(category => category.Id);
 
+            var strXml = new StringBuilder("<root>");
 
-            var nbi = new NBrightInfo(false);
-            nbi.Lang = store.Culture.ToString();
-//            nbi.
+            // add categories
+            store.Categories.ForEach(category => strXml.Append(_converter.CreateCategory(category, store).ToXmlItem()));
+            store.Categories.ForEach(category => strXml.Append(_converter.CreateCategoryLang(category, store).ToXmlItem()));
 
+            strXml.Append("</root>");
 
-/*            var root =
-                new XElement("root"
-                    ,
-                    new XElement("products"
-                        , new XElement(store.Culture.ToString()
-                            , store.Products.Select(product => CreateProduct(product, store, ref id))
-                        )
-                    )
-                    ,
-                    new XElement("categories"
-                        , new XElement(store.Culture.ToString()
-                            , store.Categories.ToList().Select(category => CreateCategory(category, store))
-                        )
-                    )
-                );
+            writer.Write(strXml.ToString());
 
-            root.Save(writer);*/
         }
 
     }

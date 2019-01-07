@@ -59,7 +59,7 @@ namespace ZIndex.DNN.NBrightImport
                 AppendStatusText(_entity.ToString());
 
                 var importManager = new ImportManager(new StoreParser(new CategoriesParser(), new ProductsParser()),
-                    new ImportV2FileGenerator(new Converter()), new ZipFileGenerator());
+                    new ImportV4FileGenerator(new Converter()), new ZipFileGenerator());
 
                 // todo: put this is a separate thread
                 importManager.GenerateImportFiles(_entity.SrcPath

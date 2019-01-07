@@ -30,14 +30,6 @@ namespace ZIndex.DNN.NBrightImport.Import
             // initialize the id for models and images (use a value > product or category id)
             var id = store.Products.Max(product => product.Id) + store.Categories.Max(category => category.Id);
 
-
-/*
-            var nbi = new NBrightInfo(false);
-            nbi.Lang = store.Culture.ToString();
-            nbi.
-*/
-
-
             var root =
                 new XElement("root"
                     ,

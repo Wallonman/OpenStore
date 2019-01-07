@@ -8,13 +8,13 @@ namespace ZIndex.DNN.NBrightImport.Import
     {
         private readonly ILog _log = new LoggerBase(typeof(ImportManager)).Logger;
         private readonly IStoreParser _storeParser;
-        private readonly IImportFileGenerator _importV2FileGenerator;
+        private readonly IImportFileGenerator _importFileGenerator;
         private readonly IZipFileGenerator _zipFileGenerator;
 
         public ImportManager(IStoreParser storeParser, IImportFileGenerator importV2FileGenerator, IZipFileGenerator zipFileGenerator)
         {
             _storeParser = storeParser;
-            _importV2FileGenerator = importV2FileGenerator;
+            _importFileGenerator = importV2FileGenerator;
             _zipFileGenerator = zipFileGenerator;
         }
 
@@ -28,7 +28,7 @@ namespace ZIndex.DNN.NBrightImport.Import
             _log.Info("Generating file {0}", xmlFilename);
             using (var writer = File.CreateText(xmlFilename))
             {
-                _importV2FileGenerator.Generate(writer, store);
+                _importFileGenerator.Generate(writer, store);
             }
 
             _log.Info("Generating zip file {0}", zipFilename);

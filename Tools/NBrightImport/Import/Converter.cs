@@ -73,8 +73,8 @@ namespace ZIndex.DNN.NBrightImport.Import
         public NBrightInfo CreateCategory(Category category, Store store)
         {
             var nbi = CreateNBrightInfo(store, "CATEGORY");
-            nbi.ItemID = category.Id*10;
-            nbi.ParentItemId = category.Parent?.Id*10 ?? 0;
+            nbi.ItemID = category.Id;//category.Id*10;
+            nbi.ParentItemId = category.Parent?.Id ?? 0;//category.Parent?.Id*10 ?? 0;
             nbi.XMLData = $@"<genxml>
                                 <files/>
                                 <hidden>
@@ -90,7 +90,7 @@ namespace ZIndex.DNN.NBrightImport.Import
                                 </checkbox>
                                 <dropdownlist>
                                     <ddlgrouptype>cat</ddlgrouptype>
-                                    <ddlparentcatid>{category.Parent?.Id * 10 ?? 0}</ddlparentcatid>
+                                    <ddlparentcatid>{category.Parent?.Id ?? 0}</ddlparentcatid>
                                     <ddlattrcode/>
                                     <selectgrouptype>null</selectgrouptype>
                                     <selectcatid/>
@@ -104,8 +104,8 @@ namespace ZIndex.DNN.NBrightImport.Import
         public NBrightInfo CreateCategoryLang(Category category, Store store)
         {
             var nbi = CreateNBrightInfo(store, "CATEGORYLANG");
-            nbi.ItemID = category.Id*10+1;
-            nbi.ParentItemId = category.Id*10;
+            nbi.ItemID = category.Id+1;//category.Id*10+1;
+            nbi.ParentItemId = category.Id;//category.Id*10;
             nbi.XMLData = $@"<genxml>
                               <files/>
                             <hidden/>

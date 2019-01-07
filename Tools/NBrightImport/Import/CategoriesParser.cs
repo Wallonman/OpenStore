@@ -68,7 +68,7 @@ namespace ZIndex.DNN.NBrightImport.Import
                         _log.Debug("Creating categoty {0}", di.FullName);
                         var category = new Category
                         {
-                            Id = id++,
+                            Id = id+=2,
                             Name = di.Name,
                             Parent = parent
                         };

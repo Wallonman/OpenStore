@@ -70,6 +70,22 @@ namespace ZIndex.DNN.NBrightImport.Import
 
         }
 
+        public NBrightInfo CreateProduct(Product product, Store store)
+        {
+            var nbi = CreateNBrightInfo(store, "PRD");
+            nbi.ItemID = product.Id;
+            nbi.XMLData = $@"<genxml></genxml>";
+            return nbi;
+        }
+
+        public NBrightInfo CreateProductLang(Product product, Store store)
+        {
+            var nbi = CreateNBrightInfo(store, "PRDLANG");
+            nbi.ItemID = product.Id+1;
+            nbi.XMLData = $@"<genxml></genxml>";
+            return nbi;
+        }
+
         public NBrightInfo CreateCategory(Category category, Store store)
         {
             var nbi = CreateNBrightInfo(store, "CATEGORY");
@@ -98,6 +114,7 @@ namespace ZIndex.DNN.NBrightImport.Import
                                 <checkboxlist/>
                                 <radiobuttonlist/>
                              </genxml>";
+
             return nbi;
         }
     

@@ -63,20 +63,19 @@ namespace ZIndex.DNN.NBrightImport.UnitTests.FolderParser
         [Test]
         public void ProductRootIdIsValid()
         {
-            Assert.AreEqual(1, _actualProducts.Single(category => category.Name == "0").Id);
+            Assert.AreEqual(3, _actualProducts.Single(category => category.Name == "0").Id);
         }
 
         [Test]
         public void Product111IdIsValid()
         {
-            Assert.AreEqual(3, _actualProducts.Single(category => category.Name == "111").Id);
+            Assert.AreEqual(7, _actualProducts.Single(category => category.Name == "111").Id);
         }
 
         [Test]
         public void ProductIdsAreValid()
         {
-            // ID's : 1+2+3+4+5+6+7+8 = 36
-            Assert.AreEqual(36, _actualProducts.Sum(product => product.Id));
+            Assert.AreEqual(80, _actualProducts.Sum(product => product.Id));
         }
 
         [Test]

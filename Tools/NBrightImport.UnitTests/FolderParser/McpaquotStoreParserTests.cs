@@ -61,7 +61,7 @@ namespace ZIndex.DNN.NBrightImport.UnitTests.FolderParser
         [Test]
         public void Product1IdIsValid()
         {
-            Assert.AreEqual(1, _actualProducts.Single(category => category.Name == "DP 2017_BEB_4083").Id);
+            Assert.AreEqual(3, _actualProducts.Single(category => category.Name == "DP 2017_BEB_4083").Id);
         }
 
         [Test]
@@ -85,7 +85,7 @@ namespace ZIndex.DNN.NBrightImport.UnitTests.FolderParser
         [Test]
         public void ProductCategoryIsValid()
         {
-            Assert.AreEqual(4, _actualProducts.Single(category => category.Name == "DP 2017_BEB_4083").Category.Id);
+            Assert.AreEqual(8, _actualProducts.Single(category => category.Name == "DP 2017_BEB_4083").Category.Id);
         }
 
     }

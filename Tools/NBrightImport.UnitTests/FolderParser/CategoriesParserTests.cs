@@ -74,20 +74,19 @@ namespace ZIndex.DNN.NBrightImport.UnitTests.FolderParser
         [Test]
         public void CategoryPath1IdIsValid()
         {
-            Assert.AreEqual(2, _actualCategories.Single(category => category.Name == "Path1").Id);
+            Assert.AreEqual(4, _actualCategories.Single(category => category.Name == "Path1").Id);
         }
 
         [Test]
         public void CategoryPath2IdIsValid()
         {
-            Assert.AreEqual(5, _actualCategories.Single(category => category.Name == "Path2").Id);
+            Assert.AreEqual(10, _actualCategories.Single(category => category.Name == "Path2").Id);
         }
 
         [Test]
         public void CategoryIdsAreValid()
         {
-            // ID's : 1+2+3+4+5 = 15
-            Assert.AreEqual(15, _actualCategories.Sum(category => category.Id));
+            Assert.AreEqual(29, _actualCategories.Sum(category => category.Id));
         }
 
 

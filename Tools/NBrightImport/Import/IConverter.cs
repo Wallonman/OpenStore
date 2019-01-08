@@ -23,5 +23,7 @@ namespace ZIndex.DNN.NBrightImport.Import
 
         NBrightInfo CreateCategory(Category category, Store store);
         NBrightInfo CreateCategoryLang(Category category, Store store);
+        NBrightInfo CreateProduct(Product product, Store store);
+        NBrightInfo CreateProductLang(Product product, Store store);
     }
 }

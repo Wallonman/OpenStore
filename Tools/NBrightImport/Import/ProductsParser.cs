@@ -73,7 +73,7 @@ namespace ZIndex.DNN.NBrightImport.Import
                 _log.Debug("Creating product {0}", di.FullName);
                 var product = new Product
                 {
-                    Id = localId++,
+                    Id = localId+=2,
                     Name = Path.GetFileNameWithoutExtension(p.Name),
                     ImageFilename = p.Name,
                     // look up the category

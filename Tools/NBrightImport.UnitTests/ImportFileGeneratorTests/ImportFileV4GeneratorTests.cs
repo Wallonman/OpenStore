@@ -22,6 +22,7 @@ namespace ZIndex.DNN.NBrightImport.UnitTests.ImportFileGeneratorTests
         private Category _rootCategory;
         private Category _childCategory;
         private Mock<IConverter> _converter;
+        protected internal NBrightInfo _nBrightInfo;
 
         #region Setup/Teardown
 
@@ -43,14 +44,33 @@ namespace ZIndex.DNN.NBrightImport.UnitTests.ImportFileGeneratorTests
             {
                 Products = new List<Product>
                 {
-                    new Product{Id = 1, ImageFilename = "1.jpg", Name = "prod1", Category = _rootCategory},
-                    new Product{Id = 2, ImageFilename = "2.jpg", Name = "prod2", Category = _childCategory},
+                    new Product {Id = 1, ImageFilename = "1.jpg", Name = "prod1", Category = _rootCategory},
+                    new Product {Id = 2, ImageFilename = "2.jpg", Name = "prod2", Category = _childCategory},
                 },
                 Categories = _categories,
                 Culture = new CultureInfo("fr-BE"),
                 ImageBasePath = "c:\\temp",
                 ImageBaseUrl = "/url/",
                 ProductUnitCost = 10,
+            };
+
+            _nBrightInfo = new NBrightInfo(true)
+            {
+                PortalId = 0, //todo: add portalId in store
+                GUIDKey = "",
+                Lang = _store.Culture.ToString(),
+                ModifiedDate = DateTime.Now,
+                ModuleId = -1,
+                ParentItemId = 0,
+                RowCount = 0,
+                TextData = "",
+//                TypeCode = typeCode,
+                UserId = 0,
+                XMLData = "", // ?????
+                //XMLDoc =  ????
+                XrefItemId = 0,
+                ItemID = 1,
+                
             };
 
             // mock the converter
@@ -60,25 +80,37 @@ namespace ZIndex.DNN.NBrightImport.UnitTests.ImportFileGeneratorTests
             _converter.Setup(converter => converter.ToImageBaseUrl(It.IsAny<Product>(), It.IsAny<string>()))
                 .Returns("/url/image.jpg");
             _converter.Setup(converter => converter.CreateCategory(It.IsAny<Category>(), It.IsAny<Store>()))
-                .Returns(new NBrightInfo(true)
+                .Returns(() =>
                 {
-                    PortalId = 0, //todo: add portalId in store
-                    ItemID = 1,
-/*
-                    GUIDKey = "",
-                    Lang = CultureInfo.CurrentCulture.ToString(),
-                    ModifiedDate = DateTime.Now,
-                    ModuleId = -1,
-                    ParentItemId = 0,
-                    RowCount = 0,
-                    TextData = "",
-                    TypeCode = "CATEGORY",
-                    UserId = 0,
-                    XMLData = "",
-                    //XMLDoc = 
-                    XrefItemId = 0,
-*/
+                    _nBrightInfo.TypeCode = "CATEGORY";
 
+                    return
+                        _nBrightInfo;
+                });
+            _converter.Setup(converter => converter.CreateCategoryLang(It.IsAny<Category>(), It.IsAny<Store>()))
+                .Returns(() =>
+                {
+                    _nBrightInfo.TypeCode = "CATEGORYLANG";
+
+                    return
+                        _nBrightInfo;
+                });
+            _converter.Setup(converter => converter.CreateProduct(It.IsAny<Product>(), It.IsAny<Store>()))
+                .Returns(() =>
+                {
+                    _nBrightInfo.TypeCode = "PRD";
+
+                    return
+                        _nBrightInfo;
+                });
+
+            _converter.Setup(converter => converter.CreateProductLang(It.IsAny<Product>(), It.IsAny<Store>()))
+                .Returns(() =>
+                {
+                    _nBrightInfo.TypeCode = "PRDLANG";
+
+                    return
+                        _nBrightInfo;
                 });
 
             TextWriter writer = new StringWriter();
@@ -92,7 +124,6 @@ namespace ZIndex.DNN.NBrightImport.UnitTests.ImportFileGeneratorTests
 
             Assert.IsNotNull(_actual);
             Logger.Debug(_actual.ToString());
-
         }
 
         [TearDown]
@@ -110,123 +141,30 @@ namespace ZIndex.DNN.NBrightImport.UnitTests.ImportFileGeneratorTests
         }
 
         [Test]
-        public void ImportCategoriesCountIsValid()
+        public void CreateProductCountIsValid()
         {
-            _converter.Verify(converter => converter.CreateCategory(It.IsAny<Category>(), It.IsAny<Store>()), Times.Exactly(2));
+            _converter.Verify(converter => converter.CreateProduct(It.IsAny<Product>(), It.IsAny<Store>()),
+                Times.Exactly(2));
         }
-        /*
-
         [Test]
-        public void ImportRootCategoryNameIsValid()
+        public void CreateProductLangCountIsValid()
         {
-            Assert.AreEqual("root", _actual.Descendants("NB_Store_CategoriesInfo").First().Element("CategoryName").Value);
-        }
-
-        [Test]
-        public void ImportRootCategoryHasNoParent()
-        {
-            Assert.AreEqual("0", _actual.Descendants("NB_Store_CategoriesInfo").First().Element("ParentCategoryID").Value);
+            _converter.Verify(converter => converter.CreateProductLang(It.IsAny<Product>(), It.IsAny<Store>()),
+                Times.Exactly(2));
         }
 
         [Test]
-        public void ImportChildCategoryParentIsValid()
+        public void CreateCategoryCountIsValid()
         {
-            Assert.AreEqual("100", _actual.Descendants("NB_Store_CategoriesInfo").Last().Element("ParentCategoryID").Value);
+            _converter.Verify(converter => converter.CreateCategory(It.IsAny<Category>(), It.IsAny<Store>()),
+                Times.Exactly(2));
         }
-
-/*
         [Test]
-        public void ImportCategoryImageURLIsValid()
+        public void CreateCategoryLangCountIsValid()
         {
-            Assert.AreEqual("/ImageBaseUrl/CategoryImage..jpg", _actual.Descendants("NB_Store_CategoriesInfo").First().Element("ImageURL").Value);
+            _converter.Verify(converter => converter.CreateCategoryLang(It.IsAny<Category>(), It.IsAny<Store>()),
+                Times.Exactly(2));
         }
-#1#
-
-        [Test]
-        public void ImportContainsTwoProducts()
-        {
-            Assert.AreEqual(2, _actual.Descendants("NB_Store_ProductsInfo").Count());
-        }
-
-
-
-        [Test]
-        public void ImportProductModelHasValidId()
-        {
-            Assert.AreEqual("103", _actual.Descendants("ModelID").Min(element => element.Value));
-        }
-
-        [Test]
-        public void ImportProductModelHasValidProductId()
-        {
-            Assert.AreEqual("1", _actual.Descendants("NB_Store_ModelInfo").First().Element("ProductID").Value);
-        }
-
-        [Test]
-        public void ImportProductModelHasValidUnitCost()
-        {
-            Assert.AreEqual("10", _actual.Descendants("NB_Store_ModelInfo").First().Element("UnitCost").Value);
-        }
-
-        [Test]
-        public void ImportProductModelHasValidModelRef()
-        {
-            Assert.AreEqual("prod1", _actual.Descendants("NB_Store_ModelInfo").First().Element("ModelRef").Value);
-        }
-
-        [Test]
-        public void ImportProductModelHasValidLang()
-        {
-            Assert.AreEqual("fr-BE", _actual.Descendants("NB_Store_ModelInfo").First().Element("Lang").Value);
-        }
-
-        [Test]
-        public void ImportProductImageHasValidProductID()
-        {
-            Assert.AreEqual("1", _actual.Descendants("NB_Store_ProductImageInfo").First().Element("ProductID").Value);
-        }
-
-        [Test]
-        public void ImportProductImageHasValidImagePath()
-        {
-            Assert.AreEqual(@"c:\temp\image.jpg", _actual.Descendants("NB_Store_ProductImageInfo").First().Element("ImagePath").Value);
-        }
-
-        [Test]
-        public void ImportProductImageHasValidLang()
-        {
-            Assert.AreEqual("fr-BE", _actual.Descendants("NB_Store_ProductImageInfo").First().Element("Lang").Value);
-        }
-
-        [Test]
-        public void ImportProductImageHasValidImageURL()
-        {
-            Assert.AreEqual("/url/image.jpg", _actual.Descendants("NB_Store_ProductImageInfo").First().Element("ImageURL").Value);
-        }
-
-        [Test]
-        public void ImportProductCategoryHasValidCategoryID()
-        {
-            Assert.AreEqual("100", _actual.Descendants("P").FirstOrDefault().Descendants("CategoryID").First().Value);
-        }
-
-
-        [Test]
-        public void ImportCultureCountIsValid()
-        {
-            var langs = _actual.Descendants("Lang");
-            Assert.AreEqual(8, langs.Count()); // 2 products with 3 lang elements + 2 categories
-
-        }
-
-        [Test]
-        public void ImportCulturesAreValid()
-        {
-            var langs = _actual.Descendants("Lang");
-            // all Lang element must be fr-BE
-            langs.ToList().ForEach(element => Assert.AreEqual("fr-BE", element.Value));
-        }
-*/
 
 
     }

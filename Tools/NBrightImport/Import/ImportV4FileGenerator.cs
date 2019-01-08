@@ -35,6 +35,10 @@ namespace ZIndex.DNN.NBrightImport.Import
 
             var strXml = new StringBuilder("<root>");
 
+            // add products
+            store.Products.ForEach(product => strXml.Append(_converter.CreateProduct(product, store).ToXmlItem()));
+            store.Products.ForEach(product => strXml.Append(_converter.CreateProductLang(product, store).ToXmlItem()));
+
             // add categories
             store.Categories.ForEach(category => strXml.Append(_converter.CreateCategory(category, store).ToXmlItem()));
             store.Categories.ForEach(category => strXml.Append(_converter.CreateCategoryLang(category, store).ToXmlItem()));

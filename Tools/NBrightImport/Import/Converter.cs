@@ -74,7 +74,138 @@ namespace ZIndex.DNN.NBrightImport.Import
         {
             var nbi = CreateNBrightInfo(store, "PRD");
             nbi.ItemID = product.Id;
-            nbi.XMLData = $@"<genxml></genxml>";
+            nbi.XMLData = $@"<genxml>
+                              <files />
+                              <hidden>
+                                <imageref>{product.Name}</imageref>
+                                <imageurl>{ToImageBaseUrl(product, store.ImageBaseUrl)}</imageurl>
+                                <imagepath>{ToImagePath(product, store.ImageBasePath)}</imagepath>
+                              </hidden>
+                              <textbox>
+                                <txtproductref>{product.Name}</txtproductref>
+                                <manufacturer />
+                                <txtaddmodelqty>1</txtaddmodelqty>
+                                <txtmodelref>{product.Name}</txtmodelref>
+                                <txtunitcost datatype=""double"">{store.ProductUnitCost}</txtunitcost>
+                                <txtsaleprice datatype=""double"">0</txtsaleprice>
+                                <txtdealercost datatype=""double"">0</txtdealercost>
+                                <txtdealersale datatype=""double"">0</txtdealersale>
+                                <txtpurchasecost datatype=""double"">0</txtpurchasecost>
+                                <txtbarcode />
+                                <weight datatype=""double"">0</weight>
+                                <depth datatype=""double"">0</depth>
+                                <width datatype=""double"">0</width>
+                                <height datatype=""double"">0</height>
+                                <unitqty datatype=""double"">0</unitqty>
+                                <txtqtyremaining datatype=""double"">0</txtqtyremaining>
+                                <txtqtyminstock datatype=""double"">0</txtqtyminstock>
+                                <txtqtystockset datatype=""double"">0</txtqtystockset>
+                                <unit />
+                                <availabledate datatype=""date"" />
+                                <delay />
+                                <txtaddoptqty>1</txtaddoptqty>
+                                <txtaddoptvalueqty>1</txtaddoptvalueqty>
+                              </textbox>
+                              <checkbox>
+                                <chkishidden>False</chkishidden>
+                                <chkdisable>False</chkdisable>
+                                <chkdisablesale>False</chkdisablesale>
+                                <chkdisabledealer>False</chkdisabledealer>
+                                <chkstockon>False</chkstockon>
+                                <chkdeleted>False</chkdeleted>
+                                <chkdealeronly>False</chkdealeronly>
+                                <chkhidden>False</chkhidden>
+                              </checkbox>
+                              <dropdownlist>
+                                <selectcategory>{product.Category.Id}</selectcategory>
+                                <selectgrouptype>null</selectgrouptype>
+                              </dropdownlist>
+                              <checkboxlist />
+                              <radiobuttonlist />
+                              <models>
+                                <genxml>
+                                  <files />
+                                  <hidden>
+                                    <modelid>{product.Name}</modelid>
+                                  </hidden>
+                                  <textbox>
+                                    <txtmodelref>{product.Name}</txtmodelref>
+                                    <txtunitcost datatype=""double"">{store.ProductUnitCost}</txtunitcost>
+                                    <txtsaleprice datatype=""double"">0</txtsaleprice>
+                                    <txtdealercost datatype=""double"">0</txtdealercost>
+                                    <txtdealersale datatype=""double"">0</txtdealersale>
+                                    <txtpurchasecost datatype=""double"">0</txtpurchasecost>
+                                    <txtbarcode />
+                                    <weight datatype=""double"">0</weight>
+                                    <depth datatype=""double"">0</depth>
+                                    <width datatype=""double"">0</width>
+                                    <height datatype=""double"">0</height>
+                                    <unitqty datatype=""double"">0</unitqty>
+                                    <txtqtyremaining datatype=""double"">0</txtqtyremaining>
+                                    <txtqtyminstock datatype=""double"">0</txtqtyminstock>
+                                    <txtqtystockset datatype=""double"">0</txtqtystockset>
+                                    <unit />
+                                    <availabledate datatype=""date"" />
+                                    <delay />
+                                  </textbox>
+                                  <checkbox>
+                                    <chkdisablesale>False</chkdisablesale>
+                                    <chkdisabledealer>False</chkdisabledealer>
+                                    <chkstockon>False</chkstockon>
+                                    <chkishidden>False</chkishidden>
+                                    <chkdeleted>False</chkdeleted>
+                                    <chkdealeronly>False</chkdealeronly>
+                                  </checkbox>
+                                  <dropdownlist>
+                                    <taxrate />
+                                    <modelstatus>010</modelstatus>
+                                  </dropdownlist>
+                                  <checkboxlist />
+                                  <radiobuttonlist />
+                                </genxml>
+                              </models>
+                              <options />
+                              <imgs>
+                                <genxml>
+                                  <files />
+                                  <hidden>
+                                    <imageref>{product.Name}</imageref>
+                                    <imageurl>{ToImageBaseUrl(product, store.ImageBaseUrl)}</imageurl>
+                                    <imagepath>{ToImagePath(product, store.ImageBasePath)}</imagepath>
+                                  </hidden>
+                                  <textbox />
+                                  <checkbox>
+                                    <chkhidden>False</chkhidden>
+                                  </checkbox>
+                                  <dropdownlist />
+                                  <checkboxlist />
+                                  <radiobuttonlist />
+                                </genxml>
+                              </imgs>
+                              <docs />
+                              <importref>{product.Name}</importref>
+                              <calcfromprice datatype=""double"">10</calcfromprice>
+                              <calcsaleprice datatype=""double"">0</calcsaleprice>
+                              <calcfrombulkprice datatype=""double"">0</calcfrombulkprice>
+                              <calcsalebulkprice datatype=""double"">0</calcsalebulkprice>
+                              <calcdealerfromprice datatype=""double"">0</calcdealerfromprice>
+                              <calcdealersaleprice datatype=""double"">0</calcdealersaleprice>
+                              <calcfrompriceunit datatype=""double"">10</calcfrompriceunit>
+                              <calcsalepriceunit datatype=""double"">0</calcsalepriceunit>
+                              <calcfrombulkpriceunit datatype=""double"">0</calcfrombulkpriceunit>
+                              <calcsalebulkpriceunit datatype=""double"">0</calcsalebulkpriceunit>
+                              <calcdealerfrompriceunit datatype=""double"">0</calcdealerfrompriceunit>
+                              <calcdealersalepriceunit datatype=""double"">0</calcdealersalepriceunit>
+                              <calchighunitprice datatype=""double"">10</calchighunitprice>
+                              <calchighdealerunitprice datatype=""double"">0</calchighdealerunitprice>
+                              <calcbestprice datatype=""double"">10</calcbestprice>
+                              <calcbestpriceunit datatype=""double"">10</calcbestpriceunit>
+                              <calcdealerbestprice datatype=""double"">0</calcdealerbestprice>
+                              <calcdealerbestpriceunit datatype=""double"">0</calcdealerbestpriceunit>
+                              <calcbestpriceall datatype=""double"">10</calcbestpriceall>
+                              <calcbestpriceallunit datatype=""double"">10</calcbestpriceallunit>
+                              <defaultcatid>121</defaultcatid>
+                            </genxml>";
             return nbi;
         }
 
@@ -82,7 +213,69 @@ namespace ZIndex.DNN.NBrightImport.Import
         {
             var nbi = CreateNBrightInfo(store, "PRDLANG");
             nbi.ItemID = product.Id+1;
-            nbi.XMLData = $@"<genxml></genxml>";
+            nbi.ParentItemId = product.Id;
+            nbi.XMLData = $@"<genxml>
+                                  <files />
+                                  <hidden>
+                                    <fimageurl update=""lang"">{ToImageBaseUrl(product, store.ImageBaseUrl)}</fimageurl>
+                                    <fimagepath update=""lang"">{ToImagePath(product, store.ImageBasePath)}</fimagepath>
+                                    <fimageref update=""lang"">{product.Name}</fimageref>
+                                  </hidden>
+                                  <textbox>
+                                    <description />
+                                    <txtproductname update=""lang"" />
+                                    <extrafield update=""lang"" />
+                                    <txtsummary update=""lang"" />
+                                    <txtmodelname update=""lang"" />
+                                    <txtextra update=""lang"" />
+                                    <txtseoname update=""lang"" />
+                                    <txtseopagetitle update=""lang"" />
+                                    <seodescription update=""lang"" />
+                                    <txtimagedesc update=""lang"" />
+                                  </textbox>
+                                  <checkbox>
+                                    <chkishiddenlang update=""lang"">False</chkishiddenlang>
+                                  </checkbox>
+                                  <dropdownlist />
+                                  <checkboxlist />
+                                  <radiobuttonlist />
+                                  <options />
+                                  <docs />
+                                  <models>
+                                    <genxml>
+                                      <files />
+                                      <hidden />
+                                      <textbox>
+                                        <txtmodelname />
+                                        <txtextra />
+                                      </textbox>
+                                      <checkbox />
+                                      <dropdownlist />
+                                      <checkboxlist />
+                                      <radiobuttonlist />
+                                    </genxml>
+                                  </models>
+                                  <edt>
+                                    <description />
+                                  </edt>
+                                  <imgs>
+                                    <genxml>
+                                      <files />
+                                      <hidden>
+                                        <fimageurl>{ToImageBaseUrl(product, store.ImageBaseUrl)}</fimageurl>
+                                        <fimagepath>{ToImagePath(product, store.ImageBasePath)}</fimagepath>
+                                        <fimageref>{product.Name}</fimageref>
+                                      </hidden>
+                                      <textbox>
+                                        <txtimagedesc />
+                                      </textbox>
+                                      <checkbox />
+                                      <dropdownlist />
+                                      <checkboxlist />
+                                      <radiobuttonlist />
+                                    </genxml>
+                                  </imgs>
+                                </genxml>";
             return nbi;
         }
 

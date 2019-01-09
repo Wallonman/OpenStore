@@ -19,7 +19,7 @@ namespace ZIndex.DNN.NBrightImport.Import
 
             var list = new List<Product> { };
 
-            var id = 1;
+            var id = _categories.Max(category => category.Id) + 1;
 
             // parse the files of the root path
             list.AddRange(EnumerateFilesAndCreateProducts(directoryInfo, ref id));
@@ -27,7 +27,7 @@ namespace ZIndex.DNN.NBrightImport.Import
             // parse the root's childs folders
             Parse(rootPath, id, list, categories);
 
-            _log.Info("{0} categories parsed", list.Count());
+            _log.Info("{0} products parsed", list.Count());
 
             return list;
         }

@@ -36,12 +36,15 @@ namespace ZIndex.DNN.NBrightImport.Import
             var strXml = new StringBuilder("<root>");
 
             // add products
-            store.Products.ForEach(product => strXml.Append(_converter.CreateProduct(product, store).ToXmlItem()));
-            store.Products.ForEach(product => strXml.Append(_converter.CreateProductLang(product, store).ToXmlItem()));
+            store.Products.ForEach(product => strXml.Append(_converter.CreateProductElements(product, store).Select(nbi => nbi.ToXmlItem())));
+//            store.Products.ForEach(product => strXml.Append(_converter.CreateProductElements(product, store).ToXmlItem()));
+//            store.Products.ForEach(product => strXml.Append(_converter.CreateProductLang(product, store).ToXmlItem()));
+//            store.Products.ForEach(product => strXml.Append(_converter.CreateCategoryXRef(product, store).ToXmlItem()));
 
             // add categories
-            store.Categories.ForEach(category => strXml.Append(_converter.CreateCategory(category, store).ToXmlItem()));
-            store.Categories.ForEach(category => strXml.Append(_converter.CreateCategoryLang(category, store).ToXmlItem()));
+            store.Categories.ForEach(category => strXml.Append(_converter.CreateCategoryElements(category, store).Select(nbi => nbi.ToXmlItem())));
+//            store.Categories.ForEach(category => strXml.Append(_converter.CreateCategoryElements(category, store).ToXmlItem()));
+//            store.Categories.ForEach(category => strXml.Append(_converter.CreateCategoryLang(category, store).ToXmlItem()));
 
             strXml.Append("</root>");
 

@@ -35,6 +35,7 @@ namespace ZIndex.DNN.NBrightImport.Import
             var rootCategory = new Category
             {
                 Id = id++, 
+                IdLang = id++,
                 Name = directoryInfo.Name
             };
             var list = new List<Category> {rootCategory};
@@ -68,7 +69,8 @@ namespace ZIndex.DNN.NBrightImport.Import
                         _log.Debug("Creating categoty {0}", di.FullName);
                         var category = new Category
                         {
-                            Id = id+=2,
+                            Id = id++,
+                            IdLang = id++,
                             Name = di.Name,
                             Parent = parent
                         };

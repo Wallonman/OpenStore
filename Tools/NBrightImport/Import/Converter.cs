@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using NBrightDNN;
 using ZIndex.DNN.NBrightImport.Model.Store;
@@ -70,7 +71,12 @@ namespace ZIndex.DNN.NBrightImport.Import
 
         }
 
-        public NBrightInfo CreateProduct(Product product, Store store)
+        public IList<NBrightInfo> CreateProductElements(Product product, Store store)
+        {
+            return new List<NBrightInfo>
+                {CreateProduct(product, store), CreateProductLang(product, store), CreateCategoryXRef(product, store)};
+        }
+        private NBrightInfo CreateProduct(Product product, Store store)
         {
             var nbi = CreateNBrightInfo(store, "PRD");
             nbi.ItemID = product.Id;
@@ -209,10 +215,10 @@ namespace ZIndex.DNN.NBrightImport.Import
             return nbi;
         }
 
-        public NBrightInfo CreateProductLang(Product product, Store store)
+        private NBrightInfo CreateProductLang(Product product, Store store)
         {
             var nbi = CreateNBrightInfo(store, "PRDLANG");
-            nbi.ItemID = product.Id+1;
+            nbi.ItemID = product.IdLang;
             nbi.ParentItemId = product.Id;
             nbi.XMLData = $@"<genxml>
                                   <files />
@@ -223,10 +229,10 @@ namespace ZIndex.DNN.NBrightImport.Import
                                   </hidden>
                                   <textbox>
                                     <description />
-                                    <txtproductname update=""lang"" />
+                                    <txtproductname update=""lang"" >{product.Name}</txtproductname>
                                     <extrafield update=""lang"" />
                                     <txtsummary update=""lang"" />
-                                    <txtmodelname update=""lang"" />
+                                    <txtmodelname update=""lang"" >{product.Name}</txtmodelname>
                                     <txtextra update=""lang"" />
                                     <txtseoname update=""lang"" />
                                     <txtseopagetitle update=""lang"" />
@@ -246,7 +252,7 @@ namespace ZIndex.DNN.NBrightImport.Import
                                       <files />
                                       <hidden />
                                       <textbox>
-                                        <txtmodelname />
+                                        <txtmodelname >{product.Name}</txtmodelname>
                                         <txtextra />
                                       </textbox>
                                       <checkbox />
@@ -279,11 +285,17 @@ namespace ZIndex.DNN.NBrightImport.Import
             return nbi;
         }
 
-        public NBrightInfo CreateCategory(Category category, Store store)
+        public IList<NBrightInfo> CreateCategoryElements(Category category, Store store)
+        {
+            return new List<NBrightInfo>
+                {CreateCategory1(category, store), CreateCategoryLang(category, store)};
+        }
+
+        private NBrightInfo CreateCategory1(Category category, Store store)
         {
             var nbi = CreateNBrightInfo(store, "CATEGORY");
-            nbi.ItemID = category.Id;//category.Id*10;
-            nbi.ParentItemId = category.Parent?.Id ?? 0;//category.Parent?.Id*10 ?? 0;
+            nbi.ItemID = category.Id;
+            nbi.ParentItemId = category.Parent?.Id ?? 0;
             nbi.XMLData = $@"<genxml>
                                 <files/>
                                 <hidden>
@@ -314,8 +326,8 @@ namespace ZIndex.DNN.NBrightImport.Import
         public NBrightInfo CreateCategoryLang(Category category, Store store)
         {
             var nbi = CreateNBrightInfo(store, "CATEGORYLANG");
-            nbi.ItemID = category.Id+1;//category.Id*10+1;
-            nbi.ParentItemId = category.Id;//category.Id*10;
+            nbi.ItemID = category.IdLang;
+            nbi.ParentItemId = category.Id;
             nbi.XMLData = $@"<genxml>
                               <files/>
                             <hidden/>
@@ -327,6 +339,19 @@ namespace ZIndex.DNN.NBrightImport.Import
                             <dropdownlist/>
                             <checkboxlist/>
                             <radiobuttonlist/>
+                            </genxml> ";
+            return nbi;
+        }
+    
+        private NBrightInfo CreateCategoryXRef(Product product, Store store)
+        {
+            var nbi = CreateNBrightInfo(store, "CATXREF");
+            nbi.ItemID = product.IdCatXRef;
+            nbi.XrefItemId = product.Category.Id;
+            nbi.ParentItemId = product.Id;
+            nbi.XMLData = $@"<genxml>
+                                <sort></sort>
+                                <typecode>PRD</typecode>
                             </genxml> ";
             return nbi;
         }

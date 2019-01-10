@@ -9,6 +9,7 @@
         /// The identifier.
         /// </value>
         public int Id { get; set; }
+        public int IdLang { get; set; }
 
         /// <summary>
         /// Gets or sets the name.

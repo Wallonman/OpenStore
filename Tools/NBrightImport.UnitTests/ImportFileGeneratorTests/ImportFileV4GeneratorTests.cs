@@ -22,7 +22,6 @@ namespace ZIndex.DNN.NBrightImport.UnitTests.ImportFileGeneratorTests
         private Category _rootCategory;
         private Category _childCategory;
         private Mock<IConverter> _converter;
-        protected internal NBrightInfo _nBrightInfo;
 
         #region Setup/Teardown
 
@@ -54,24 +53,6 @@ namespace ZIndex.DNN.NBrightImport.UnitTests.ImportFileGeneratorTests
                 ProductUnitCost = 10,
             };
 
-            _nBrightInfo = new NBrightInfo(true)
-            {
-                PortalId = 0, //todo: add portalId in store
-                GUIDKey = "",
-                Lang = _store.Culture.ToString(),
-                ModifiedDate = DateTime.Now,
-                ModuleId = -1,
-                ParentItemId = 0,
-                RowCount = 0,
-                TextData = "",
-//                TypeCode = typeCode,
-                UserId = 0,
-                XMLData = "", // ?????
-                //XMLDoc =  ????
-                XrefItemId = 0,
-                ItemID = 1,
-                
-            };
 
             // mock the converter
             _converter = new Mock<IConverter>();
@@ -79,39 +60,10 @@ namespace ZIndex.DNN.NBrightImport.UnitTests.ImportFileGeneratorTests
                 .Returns(@"c:\temp\image.jpg");
             _converter.Setup(converter => converter.ToImageBaseUrl(It.IsAny<Product>(), It.IsAny<string>()))
                 .Returns("/url/image.jpg");
-            _converter.Setup(converter => converter.CreateCategory(It.IsAny<Category>(), It.IsAny<Store>()))
-                .Returns(() =>
-                {
-                    _nBrightInfo.TypeCode = "CATEGORY";
-
-                    return
-                        _nBrightInfo;
-                });
-            _converter.Setup(converter => converter.CreateCategoryLang(It.IsAny<Category>(), It.IsAny<Store>()))
-                .Returns(() =>
-                {
-                    _nBrightInfo.TypeCode = "CATEGORYLANG";
-
-                    return
-                        _nBrightInfo;
-                });
-            _converter.Setup(converter => converter.CreateProduct(It.IsAny<Product>(), It.IsAny<Store>()))
-                .Returns(() =>
-                {
-                    _nBrightInfo.TypeCode = "PRD";
-
-                    return
-                        _nBrightInfo;
-                });
-
-            _converter.Setup(converter => converter.CreateProductLang(It.IsAny<Product>(), It.IsAny<Store>()))
-                .Returns(() =>
-                {
-                    _nBrightInfo.TypeCode = "PRDLANG";
-
-                    return
-                        _nBrightInfo;
-                });
+            _converter.Setup(converter => converter.CreateCategoryElements(It.IsAny<Category>(), It.IsAny<Store>()))
+                .Returns(() => new List<NBrightInfo> {CreateNBrightInfo("CATEGORY"), CreateNBrightInfo("CATEGORYLANG")});
+            _converter.Setup(converter => converter.CreateProductElements(It.IsAny<Product>(), It.IsAny<Store>()))
+                .Returns(() => new List<NBrightInfo> { CreateNBrightInfo("PRD"), CreateNBrightInfo("PRDLANG"), CreateNBrightInfo("CATXREF") });
 
             TextWriter writer = new StringWriter();
 
@@ -126,6 +78,28 @@ namespace ZIndex.DNN.NBrightImport.UnitTests.ImportFileGeneratorTests
             Logger.Debug(_actual.ToString());
         }
 
+        private NBrightInfo CreateNBrightInfo(string typeCode)
+        {
+            return new NBrightInfo(true)
+            {
+                PortalId = 0, //todo: add portalId in store
+                GUIDKey = "",
+                Lang = _store.Culture.ToString(),
+                ModifiedDate = DateTime.Now,
+                ModuleId = -1,
+                ParentItemId = 0,
+                RowCount = 0,
+                TextData = "",
+                TypeCode = typeCode,
+                UserId = 0,
+                XMLData = "", // ?????
+                //XMLDoc =  ????
+                XrefItemId = 0,
+                ItemID = 1,
+                
+            };
+        }
+
         [TearDown]
         public override void TestTearDown()
         {
@@ -135,36 +109,22 @@ namespace ZIndex.DNN.NBrightImport.UnitTests.ImportFileGeneratorTests
         #endregion
 
         [Test]
-        public void ImportRootIsValid()
-        {
-            Assert.AreEqual("root", _actual.Root.Name.LocalName);
-        }
+        public void ImportRootIsValid() => Assert.AreEqual("root", _actual.Root.Name.LocalName);
 
         [Test]
         public void CreateProductCountIsValid()
         {
-            _converter.Verify(converter => converter.CreateProduct(It.IsAny<Product>(), It.IsAny<Store>()),
-                Times.Exactly(2));
-        }
-        [Test]
-        public void CreateProductLangCountIsValid()
-        {
-            _converter.Verify(converter => converter.CreateProductLang(It.IsAny<Product>(), It.IsAny<Store>()),
+            _converter.Verify(converter => converter.CreateProductElements(It.IsAny<Product>(), It.IsAny<Store>()),
                 Times.Exactly(2));
         }
 
         [Test]
         public void CreateCategoryCountIsValid()
         {
-            _converter.Verify(converter => converter.CreateCategory(It.IsAny<Category>(), It.IsAny<Store>()),
+            _converter.Verify(converter => converter.CreateCategoryElements(It.IsAny<Category>(), It.IsAny<Store>()),
                 Times.Exactly(2));
         }
-        [Test]
-        public void CreateCategoryLangCountIsValid()
-        {
-            _converter.Verify(converter => converter.CreateCategoryLang(It.IsAny<Category>(), It.IsAny<Store>()),
-                Times.Exactly(2));
-        }
+
 
 
     }

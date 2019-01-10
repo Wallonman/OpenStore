@@ -9,15 +9,17 @@ namespace ZIndex.DNN.NBrightImport.UnitTests.FolderParser
     public class ProductsParserTests : TestBase
     {
         /*
-        * Typical directory structure (with generated id's)
-        * Root | 0.jpg (0)
-        * Root | Path1 | 1.jpg (1)
-        * Root | Path1 | Path11 | 111.jpg (2)
-        * Root | Path1 | Path11 | 112.jpg (3)
-        * Root | Path1 | Path12 | 121.jpg (4)
-        * Root | Path1 | Path12 | 122.jpg (5)
-        * Root | Path2 | 21.jpg (6)
-        * Root | Path2 | 27.jpg (7)
+        * Typical directory structure (with generated id + idlang + idcatxref)
+        * Root | 0.jpg (13+14+15)
+        * Root | Path1 | 1.jpg (16+17+18)
+        * Root | Path1 | Path11 | 111.jpg (19+20+21)
+        * Root | Path1 | Path11 | 112.jpg (22+23+24)
+        * Root | Path1 | Path12 | 121.jpg (25+26+27)
+        * Root | Path1 | Path12 | 122.jpg (28+29+30)
+        * Root | Path2 | 21.jpg (31+32+33)
+        * Root | Path2 | 27.jpg (34+35+36)
+         *
+         * sum id's = 588
         */
 
 
@@ -55,52 +57,32 @@ namespace ZIndex.DNN.NBrightImport.UnitTests.FolderParser
         #endregion
 
         [Test]
-        public void ProductsCountIsValid()
-        {
-            Assert.AreEqual(8, _actualProducts.Count);
-        }
+        public void ProductsCountIsValid() => Assert.AreEqual(8, _actualProducts.Count);
 
         [Test]
-        public void ProductRootIdIsValid()
-        {
-            Assert.AreEqual(3, _actualProducts.Single(category => category.Name == "0").Id);
-        }
+        public void ProductRootIdIsValid() => Assert.AreEqual(13, _actualProducts.Single(category => category.Name == "0").Id);
+        [Test]
+        public void ProductRootIdLangIsValid() => Assert.AreEqual(14, _actualProducts.Single(category => category.Name == "0").IdLang);
+        [Test]
+        public void ProductRootIdCatXRefIsValid() => Assert.AreEqual(15, _actualProducts.Single(category => category.Name == "0").IdCatXRef);
 
         [Test]
-        public void Product111IdIsValid()
-        {
-            Assert.AreEqual(7, _actualProducts.Single(category => category.Name == "111").Id);
-        }
+        public void Product111IdIsValid() => Assert.AreEqual(19, _actualProducts.Single(category => category.Name == "111").Id);
 
         [Test]
-        public void ProductIdsAreValid()
-        {
-            Assert.AreEqual(80, _actualProducts.Sum(product => product.Id));
-        }
+        public void ProductIdsAreValid() => Assert.AreEqual(588, _actualProducts.Sum(product => product.Id+product.IdLang+product.IdCatXRef));
 
         [Test]
-        public void ProductNameIsValid()
-        {
-            Assert.AreEqual("111", _actualProducts.Single(category => category.Name == "111").Name);
-        }
+        public void ProductNameIsValid() => Assert.AreEqual("111", _actualProducts.Single(category => category.Name == "111").Name);
 
         [Test]
-        public void ProductImageFilenameIsValid()
-        {
-            Assert.AreEqual("111.JPG", _actualProducts.Single(category => category.Name == "111").ImageFilename);
-        }
+        public void ProductImageFilenameIsValid() => Assert.AreEqual("111.JPG", _actualProducts.Single(category => category.Name == "111").ImageFilename);
 
         [Test]
-        public void ProductCategoryIsNotNull()
-        {
-            Assert.IsNotNull(_actualProducts.Single(category => category.Name == "111").Category);
-        }
+        public void ProductCategoryIsNotNull() => Assert.IsNotNull(_actualProducts.Single(category => category.Name == "111").Category);
 
         [Test]
-        public void ProductCategoryIsValid()
-        {
-            Assert.AreEqual(11, _actualProducts.Single(category => category.Name == "111").Category.Id);
-        }
+        public void ProductCategoryIsValid() => Assert.AreEqual(11, _actualProducts.Single(category => category.Name == "111").Category.Id);
 
     }
 }

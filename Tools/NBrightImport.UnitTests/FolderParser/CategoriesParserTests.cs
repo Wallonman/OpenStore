@@ -9,11 +9,11 @@ namespace ZIndex.DNN.NBrightImport.UnitTests.FolderParser
     public class CategoriesParserTests : TestBase
     {
         /*
-        * Typical directory structure (with generated id's)
-        * Root(0) | Path1(1)
-        * Root(0) | Path1(1) | Path11(2)
-        * Root(0) | Path1(1) | Path12(3)
-        * Root(0) | Path2(4)
+        * Typical directory structure (with generated id + idlang)
+        * Root(1+2) | Path1(2+3)
+        * Root(1) | Path1(2+3) | Path11(4+5)
+        * Root(1) | Path1(2+3) | Path12(6+7)
+        * Root(1) | Path2(8+9)
         */
 
 
@@ -42,52 +42,34 @@ namespace ZIndex.DNN.NBrightImport.UnitTests.FolderParser
         #endregion
 
         [Test]
-        public void CategoriesCountIsValid()
-        {
-            Assert.AreEqual(5, _actualCategories.Count);
-        }
+        public void CategoriesCountIsValid() => Assert.AreEqual(5, _actualCategories.Count);
 
         [Test]
-        public void CategoryRootChildCountIsValid()
-        {
-            Assert.AreEqual(2, _actualCategories.Count(category => category.Parent != null && category.Parent.Name == "Root"));
-        }
+        public void CategoryRootChildCountIsValid() => Assert.AreEqual(2, _actualCategories.Count(category => category.Parent != null && category.Parent.Name == "Root"));
 
         [Test]
-        public void CategoryPath1ChildCountIsValid()
-        {
-            Assert.AreEqual(2, _actualCategories.Count(category => category.Parent != null && category.Parent.Name == "Path1"));
-        }
+        public void CategoryPath1ChildCountIsValid() => Assert.AreEqual(2, _actualCategories.Count(category => category.Parent != null && category.Parent.Name == "Path1"));
 
         [Test]
-        public void CategoryPath11ParentIsValid()
-        {
-            Assert.AreEqual("Path1", _actualCategories.Single(category => category.Name == "Path11").Parent.Name);
-        }
+        public void CategoryPath11ParentIsValid() => Assert.AreEqual("Path1", _actualCategories.Single(category => category.Name == "Path11").Parent.Name);
 
         [Test]
-        public void CategoryRootIdIsValid()
-        {
-            Assert.AreEqual(1, _actualCategories.Single(category => category.Name == "Root").Id);
-        }
+        public void CategoryRootIdIsValid() => Assert.AreEqual(1, _actualCategories.Single(category => category.Name == "Root").Id);
+        [Test]
+        public void CategoryRootIdLangIsValid() => Assert.AreEqual(2, _actualCategories.Single(category => category.Name == "Root").IdLang);
 
         [Test]
-        public void CategoryPath1IdIsValid()
-        {
-            Assert.AreEqual(4, _actualCategories.Single(category => category.Name == "Path1").Id);
-        }
+        public void CategoryPath1IdIsValid() => Assert.AreEqual(3, _actualCategories.Single(category => category.Name == "Path1").Id);
+        [Test]
+        public void CategoryPath1IdLangIsValid() => Assert.AreEqual(4, _actualCategories.Single(category => category.Name == "Path1").IdLang);
 
         [Test]
-        public void CategoryPath2IdIsValid()
-        {
-            Assert.AreEqual(10, _actualCategories.Single(category => category.Name == "Path2").Id);
-        }
+        public void CategoryPath2IdIsValid() => Assert.AreEqual(9, _actualCategories.Single(category => category.Name == "Path2").Id);
+        [Test]
+        public void CategoryPath2IdLangIsValid() => Assert.AreEqual(10, _actualCategories.Single(category => category.Name == "Path2").IdLang);
 
         [Test]
-        public void CategoryIdsAreValid()
-        {
-            Assert.AreEqual(29, _actualCategories.Sum(category => category.Id));
-        }
+        public void CategoryIdsAreValid() => Assert.AreEqual(55, _actualCategories.Sum(category => category.Id + category.IdLang));
 
 
     }

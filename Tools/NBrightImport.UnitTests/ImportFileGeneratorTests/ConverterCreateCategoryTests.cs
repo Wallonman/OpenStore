@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using NBrightDNN;
 using NUnit.Framework;
 using ZIndex.DNN.NBrightImport.Import;
@@ -11,7 +13,7 @@ namespace ZIndex.DNN.NBrightImport.UnitTests.ImportFileGeneratorTests
     public class ConverterCreateCategoryTests : TestBase
     {
         private Converter _converter;
-        private NBrightInfo _actual;
+        private IList<NBrightInfo> _actual;
 
         [SetUp]
         public override void TestSetup()
@@ -19,7 +21,7 @@ namespace ZIndex.DNN.NBrightImport.UnitTests.ImportFileGeneratorTests
             base.TestSetup();
 
             _converter = new Converter();
-            _actual = _converter.CreateCategory(new Category {Id = 1, Name = "name", Parent = new Category {Id = 2}},
+            _actual = _converter.CreateCategoryElements(new Category {Id = 1, Name = "name", Parent = new Category {Id = 2}},
                 new Store
                 {
                     Culture = new CultureInfo("fr-BE"),
@@ -32,58 +34,58 @@ namespace ZIndex.DNN.NBrightImport.UnitTests.ImportFileGeneratorTests
         [Test]
         public void IdIsValid()
         {
-            Assert.AreEqual(1, _actual.ItemID);
+            Assert.AreEqual(1, _actual.First().ItemID);
         }
 
         [Test]
         public void PortalIdIsValid()
         {
-            Assert.AreEqual(0, _actual.PortalId);
+            Assert.AreEqual(0, _actual.First().PortalId);
         }
         [Test]
         public void LangIsValid()
         {
-            Assert.AreEqual("fr-BE", _actual.Lang);
+            Assert.AreEqual("fr-BE", _actual.First().Lang);
         }
         [Test]
         public void ModuleIdIsValid()
         {
-            Assert.AreEqual(-1, _actual.ModuleId);
+            Assert.AreEqual(-1, _actual.First().ModuleId);
         }
         [Test]
         public void GUIDKeyIsValid()
         {
-            Assert.AreEqual("", _actual.GUIDKey);
+            Assert.AreEqual("", _actual.First().GUIDKey);
         }
         [Test]
         public void ModifiedDateIsValid()
         {
-            Assert.AreEqual(DateTime.Now.Ticks, _actual.ModifiedDate.Ticks, 10);
+            Assert.AreEqual(DateTime.Now.Ticks, _actual.First().ModifiedDate.Ticks, 10);
         }
         [Test]
         public void ParentItemIdIsValid()
         {
-            Assert.AreEqual(2, _actual.ParentItemId);
+            Assert.AreEqual(2, _actual.First().ParentItemId);
         }
         [Test]
         public void RowCountIsValid()
         {
-            Assert.AreEqual(0, _actual.RowCount);
+            Assert.AreEqual(0, _actual.First().RowCount);
         }
         [Test]
         public void TextDataIsValid()
         {
-            Assert.AreEqual("", _actual.TextData);
+            Assert.AreEqual("", _actual.First().TextData);
         }
         [Test]
         public void TypeCodeIsValid()
         {
-            Assert.AreEqual("CATEGORY", _actual.TypeCode);
+            Assert.AreEqual("CATEGORY", _actual.First().TypeCode);
         }
         [Test]
         public void UserIdIsValid()
         {
-            Assert.AreEqual(0, _actual.UserId);
+            Assert.AreEqual(0, _actual.First().UserId);
         }
     }
 }

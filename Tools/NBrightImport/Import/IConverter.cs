@@ -1,4 +1,5 @@
-﻿using NBrightDNN;
+﻿using System.Collections.Generic;
+using NBrightDNN;
 using ZIndex.DNN.NBrightImport.Model.Store;
 
 namespace ZIndex.DNN.NBrightImport.Import
@@ -21,9 +22,7 @@ namespace ZIndex.DNN.NBrightImport.Import
         /// <returns></returns>
         string ToImageBaseUrl(Product product, string imageBaseUrl);
 
-        NBrightInfo CreateCategory(Category category, Store store);
-        NBrightInfo CreateCategoryLang(Category category, Store store);
-        NBrightInfo CreateProduct(Product product, Store store);
-        NBrightInfo CreateProductLang(Product product, Store store);
+        IList<NBrightInfo> CreateCategoryElements(Category category, Store store);
+        IList<NBrightInfo> CreateProductElements(Product product, Store store);
     }
 }

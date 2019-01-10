@@ -19,7 +19,10 @@ namespace ZIndex.DNN.NBrightImport.Import
 
             var list = new List<Product> { };
 
-            var id = _categories.Max(category => category.Id) + 1;
+            var maxid = _categories.Max(category => category.Id);
+            var maxidlang = _categories.Max(category => category.IdLang);
+            var id = maxid > maxidlang ? maxid : maxidlang;
+            id++;
 
             // parse the files of the root path
             list.AddRange(EnumerateFilesAndCreateProducts(directoryInfo, ref id));
@@ -73,7 +76,9 @@ namespace ZIndex.DNN.NBrightImport.Import
                 _log.Debug("Creating product {0}", di.FullName);
                 var product = new Product
                 {
-                    Id = localId+=2,
+                    Id = localId++,
+                    IdLang = localId++,
+                    IdCatXRef = localId++,
                     Name = Path.GetFileNameWithoutExtension(p.Name),
                     ImageFilename = p.Name,
                     // look up the category

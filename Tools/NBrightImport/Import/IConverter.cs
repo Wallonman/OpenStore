@@ -22,7 +22,7 @@ namespace ZIndex.DNN.NBrightImport.Import
         /// <returns></returns>
         string ToImageBaseUrl(Product product, string imageBaseUrl);
 
-        IList<NBrightInfo> CreateCategoryElements(Category category, Store store);
-        IList<NBrightInfo> CreateProductElements(Product product, Store store);
+        List<NBrightInfo> CreateCategoryElements(Category category, Store store);
+        List<NBrightInfo> CreateProductElements(Product product, Store store);
     }
 }

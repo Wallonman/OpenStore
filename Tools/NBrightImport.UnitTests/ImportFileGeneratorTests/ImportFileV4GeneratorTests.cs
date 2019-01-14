@@ -111,6 +111,9 @@ namespace ZIndex.DNN.NBrightImport.UnitTests.ImportFileGeneratorTests
         [Test]
         public void ImportRootIsValid() => Assert.AreEqual("root", _actual.Root.Name.LocalName);
 
+        [Test] // 2 cat * 2 items + 2 PRD * 3 items = 10 items
+        public void NBrightInfoAreSerialized() => Assert.AreEqual(10, _actual.Root.Descendants().Count(element => element.Name == "item"));
+
         [Test]
         public void CreateProductCountIsValid()
         {

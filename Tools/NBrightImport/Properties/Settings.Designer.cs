@@ -25,7 +25,7 @@ namespace ZIndex.DNN.NBrightImport.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("/mcpaquot/Portals/0/productimages/")]
+        [global::System.Configuration.DefaultSettingValueAttribute("/Portals/0/NBStore/images/")]
         public string ImageBaseUrl {
             get {
                 return ((string)(this["ImageBaseUrl"]));
@@ -34,7 +34,7 @@ namespace ZIndex.DNN.NBrightImport.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\Eric\\Documents\\Work\\Svn\\McPaquot\\Website\\Portals\\0\\productimages\\")]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Src\\DNN\\Portals\\0\\NBStore\\images")]
         public string ImageBasePath {
             get {
                 return ((string)(this["ImageBasePath"]));

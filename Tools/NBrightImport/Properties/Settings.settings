@@ -3,10 +3,10 @@
   <Profiles />
   <Settings>
     <Setting Name="ImageBaseUrl" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">/mcpaquot/Portals/0/productimages/</Value>
+      <Value Profile="(Default)">/Portals/0/NBStore/images/</Value>
     </Setting>
     <Setting Name="ImageBasePath" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">C:\Users\Eric\Documents\Work\Svn\McPaquot\Website\Portals\0\productimages\</Value>
+      <Value Profile="(Default)">C:\Src\DNN\Portals\0\NBStore\images</Value>
     </Setting>
     <Setting Name="UnitCost" Type="System.Decimal" Scope="Application">
       <Value Profile="(Default)">1</Value>

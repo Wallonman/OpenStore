@@ -39,16 +39,11 @@ namespace ZIndex.DNN.NBrightImport.Import
             store.Products.ForEach(product => 
                 _converter.CreateProductElements(product, store)
                     .ForEach(nbi => strXml.Append(nbi.ToXmlItem())));
-//            store.Products.ForEach(product => strXml.Append(_converter.CreateProductElements(product, store).ToXmlItem()));
-//            store.Products.ForEach(product => strXml.Append(_converter.CreateProductLang(product, store).ToXmlItem()));
-//            store.Products.ForEach(product => strXml.Append(_converter.CreateCategoryXRef(product, store).ToXmlItem()));
 
             // add categories
             store.Categories.ForEach(category =>
                 _converter.CreateCategoryElements(category, store)
                     .ForEach(nbi => strXml.Append(nbi.ToXmlItem())));
-//            store.Categories.ForEach(category => strXml.Append(_converter.CreateCategoryElements(category, store).ToXmlItem()));
-//            store.Categories.ForEach(category => strXml.Append(_converter.CreateCategoryLang(category, store).ToXmlItem()));
 
             strXml.Append("</root>");
 

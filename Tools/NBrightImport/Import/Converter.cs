@@ -166,7 +166,7 @@ namespace ZIndex.DNN.NBrightImport.Import
                                 <txtcategoryname>{category.Name}</txtcategoryname>
                                 <txtcategoryref>{category.Name}</txtcategoryref>
                             </textbox>
-                            </genxml> ";
+                            </genxml>";
             return nbi;
         }
     

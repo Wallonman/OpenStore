@@ -49,5 +49,12 @@ namespace ZIndex.DNN.NBrightImport.Model.Store
         /// The image base URL.
         /// </value>
         public string ImageBaseUrl { get; set; }
+
+        /// <summary>
+        /// Gets or Sets the Store root path
+        /// </summary>
+        public string StoreRootPath { get; set; }
+
+        public string StoreName { get; set; }
     }
 }

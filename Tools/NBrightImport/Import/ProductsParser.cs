@@ -27,7 +27,7 @@ namespace ZIndex.DNN.NBrightImport.Import
             // parse the files of the root path
             list.AddRange(EnumerateFilesAndCreateProducts(directoryInfo, ref id));
 
-            // parse the root's childs folders
+            // parse the root's children folders
             Parse(rootPath, id, list, categories);
 
             _log.Info("{0} products parsed", list.Count());
@@ -81,6 +81,7 @@ namespace ZIndex.DNN.NBrightImport.Import
                     IdCatXRef = localId++,
                     Name = Path.GetFileNameWithoutExtension(p.Name),
                     ImageFilename = p.Name,
+                    FullPath = di.FullName,
                     // look up the category
                     Category = _categories.SingleOrDefault(category => category.Name == di.Name),
                 };

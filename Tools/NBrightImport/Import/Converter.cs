@@ -8,23 +8,26 @@ namespace ZIndex.DNN.NBrightImport.Import
 {
     public class Converter : IConverter
     {
-       /// <summary>
-       /// To the image path.
-       /// </summary>
-       /// <param name="product">The product.</param>
-       /// <param name="imageBasePath">The image base path.</param>
-       /// <returns></returns>
-       /// <exception cref="System.ArgumentNullException">
-       /// product
-       /// or
-       /// imageBasePath
-       /// </exception>
-        public string ToImagePath(Product product, string imageBasePath)
+        /// <summary>
+        /// To the image path.
+        /// </summary>
+        /// <param name="product">The product.</param>
+        /// <param name="store">The store.</param>
+        /// <returns></returns>
+        /// <exception cref="System.ArgumentNullException">
+        /// product
+        /// or
+        /// imageBasePath
+        /// </exception>
+        public string ToImagePath(Product product, Store store)
         {
             if (product == null) throw new ArgumentNullException(nameof(product));
-            if (imageBasePath == null) throw new ArgumentNullException(nameof(imageBasePath));
+            if (store == null) throw new ArgumentNullException(nameof(store));
 
-            return Path.Combine(imageBasePath, product.ImageFilename);
+//            var relativePath = product.FullPath.Remove(0, store.StoreRootPath.Length);
+//            return Path.Combine(store.ImageBasePath, store.StoreName, relativePath, product.ImageFilename);
+
+            return Path.Combine(store.ImageBasePath, product.ImageFilename);
         }
 
        /// <summary>
@@ -99,7 +102,7 @@ namespace ZIndex.DNN.NBrightImport.Import
                                 <genxml>
                                   <hidden>
                                     <imageurl>{ToImageBaseUrl(product, store.ImageBaseUrl)}</imageurl>
-                                    <imagepath>{ToImagePath(product, store.ImageBasePath)}</imagepath>
+                                    <imagepath>{ToImagePath(product, store)}</imagepath>
                                   </hidden>
                                 </genxml>
                               </imgs>

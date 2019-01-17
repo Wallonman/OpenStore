@@ -17,15 +17,16 @@ namespace ZIndex.DNN.NBrightImport.UnitTests.FolderParser
             base.TestSetup();
 
             _mockCategoriesParser = new Mock<ICategoriesParser>();
-            _mockCategoriesParser.Setup(parser => parser.Parse(It.Is<string>(s => s == "root")))
+            _mockCategoriesParser.Setup(parser => parser.Parse(It.Is<string>(s => s == "c:\\\\root")))
                 .Returns(new List<Category> {new Category {Name = "Root", Id = 0}});
             _mockProductParser = new Mock<IProductsParser>();
-            _mockProductParser.Setup(parser => parser.Parse(It.Is<string>(s => s == "root"),
+            _mockProductParser.Setup(parser => parser.Parse(It.Is<string>(s => s == "c:\\\\root"),
                     It.Is<List<Category>>(list => list.Any(item => item.Id == 0) && list.Count == 1)))
                 .Returns(new List<Product> {new Product {Id = 1}});
 
             _storeParser = new StoreParser(_mockCategoriesParser.Object, _mockProductParser.Object);
-            _actualStore = _storeParser.Parse("root", CultureInfo.InvariantCulture, "imageBasePath", "imageBaseUrl", 100);
+            _actualStore =
+                _storeParser.Parse("c:\\\\root", CultureInfo.InvariantCulture, "imageBasePath", "imageBaseUrl", 100);
         }
 
         [TearDown]
@@ -75,5 +76,10 @@ namespace ZIndex.DNN.NBrightImport.UnitTests.FolderParser
             Assert.AreEqual(100, _actualStore.ProductUnitCost);
         }
 
+        [Test]
+        public void StoreRootPathIsValid() => Assert.AreEqual("c:\\\\root", _actualStore.StoreRootPath);
+
+        [Test]
+        public void StoreNamePathIsValid() => Assert.AreEqual("root", _actualStore.StoreName);
     }
 }

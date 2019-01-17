@@ -56,7 +56,7 @@ namespace ZIndex.DNN.NBrightImport.UnitTests.ImportFileGeneratorTests
 
             // mock the converter
             _converter = new Mock<IConverter>();
-            _converter.Setup(converter => converter.ToImagePath(It.IsAny<Product>(), It.IsAny<string>()))
+            _converter.Setup(converter => converter.ToImagePath(It.IsAny<Product>(), It.IsAny<Store>()))
                 .Returns(@"c:\temp\image.jpg");
             _converter.Setup(converter => converter.ToImageBaseUrl(It.IsAny<Product>(), It.IsAny<string>()))
                 .Returns("/url/image.jpg");

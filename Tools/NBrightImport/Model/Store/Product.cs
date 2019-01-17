@@ -35,31 +35,19 @@
         /// </value>
         public string ImageFilename { get; set; }
 
-        /// <summary>
+        /*/// <summary>
         /// Gets or sets the store.
         /// </summary>
         /// <value>
         /// The store.
         /// </value>
         public Store Store { get; set; }
-
-        /* /// <summary>
-        /// Gets or sets the unit cost.
-        /// </summary>
-        /// <value>
-        /// The unit cost.
-        /// </value>
-        private decimal UnitCost { get; set; }
+*/
 
         /// <summary>
-        /// Gets or sets the Image path (i.e. C:\Users\Eric\Documents\Work\Svn\McPaquot\Website\Portals\0\productimages\100_1117.jpg)
+        /// Gets or Sets the full path
         /// </summary>
-        private string ImagePath { get; set; }
+        public string FullPath { get; set; }
 
-        /// <summary>
-        /// Gets or sets the Image Url (i.e. /website/portal/0/productimages/100_1117.jpg)
-        /// </summary>
-        private string ImageUrl { get; set; }
-        */
     }
 }

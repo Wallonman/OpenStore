@@ -9,6 +9,7 @@ namespace ZIndex.DNN.NBrightImport.UnitTests.ImportFileGeneratorTests
     {
         private Converter _converter;
         private Product _product;
+        private Store _store;
 
         [SetUp]
         public override void TestSetup()
@@ -18,6 +19,14 @@ namespace ZIndex.DNN.NBrightImport.UnitTests.ImportFileGeneratorTests
             _product = new Product
             {
                 ImageFilename = "image.jpg",
+                FullPath = @"c:\temp\test",
+            };
+
+            _store = new Store
+            {
+                StoreRootPath = @"c:\temp",
+                ImageBasePath = @"c:\inetpub",
+                StoreName = @"temp",
             };
             _converter = new Converter();
         }
@@ -31,7 +40,8 @@ namespace ZIndex.DNN.NBrightImport.UnitTests.ImportFileGeneratorTests
         [Test]
         public void ImagePathIsValid()
         {
-            Assert.AreEqual(@"c:\temp\image.jpg", _converter.ToImagePath(_product, @"c:\temp"));
+            Assert.AreEqual(@"c:\inetpub\image.jpg", _converter.ToImagePath(_product, _store));
+//            Assert.AreEqual(@"c:\inetpub\temp\test\image.jpg", _converter.ToImagePath(_product, _store));
         }
 
         [Test]

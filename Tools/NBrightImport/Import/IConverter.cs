@@ -10,9 +10,9 @@ namespace ZIndex.DNN.NBrightImport.Import
         /// To the image path.
         /// </summary>
         /// <param name="product">The product.</param>
-        /// <param name="imageBasePath">The image base path.</param>
+        /// <param name="store">The store.</param>
         /// <returns></returns>
-        string ToImagePath(Product product, string imageBasePath);
+        string ToImagePath(Product product, Store store);
 
         /// <summary>
         /// To the image base URL.

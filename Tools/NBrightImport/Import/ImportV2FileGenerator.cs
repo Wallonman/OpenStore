@@ -113,7 +113,7 @@ namespace ZIndex.DNN.NBrightImport.Import
                     , product.Name // {2} <ProductName>CCC</ProductName>
                     , store.ProductUnitCost.ToUniCost() // {3} <UnitCost>14.0000</UnitCost>
                     , store.Culture // {4} <Lang>en-US</Lang>
-                    , _converter.ToImagePath(product, store.ImageBasePath) // {5} 
+                    , _converter.ToImagePath(product, store) // {5} 
                                                                      // <ImagePath>C:\Users\Eric\Documents\Work\Svn\McPaquot\Website\Portals\0\productimages\2_0d922-11111.jpg</ImagePath>
                     , _converter.ToImageBaseUrl(product, store.ImageBaseUrl) // {6}
                                                                    // <ImageURL>/mcpaquot/Portals/0/productimages/2_0d922.jpg</ImageURL>

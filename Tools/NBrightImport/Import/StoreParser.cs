@@ -1,4 +1,6 @@
 using System.Globalization;
+using System.IO;
+using System.Linq;
 using ZIndex.DNN.NBrightImport.Model.Store;
 
 namespace ZIndex.DNN.NBrightImport.Import
@@ -29,6 +31,7 @@ namespace ZIndex.DNN.NBrightImport.Import
             var categories = _categoriesParser.Parse(rootPath);
             var products = _productsParser.Parse(rootPath, categories);
 
+            
             return new Store
             {
                 Categories = categories,
@@ -36,7 +39,9 @@ namespace ZIndex.DNN.NBrightImport.Import
                 Culture = culture,
                 ImageBasePath = imageBasePath,
                 ImageBaseUrl = imageBaseUrl,
-                ProductUnitCost = productUnitCost
+                ProductUnitCost = productUnitCost,
+                StoreRootPath = rootPath,
+                StoreName = rootPath.Split(Path.DirectorySeparatorChar).Last(),
             };
         }
     }

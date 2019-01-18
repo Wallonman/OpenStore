@@ -25,15 +25,6 @@ namespace ZIndex.DNN.NBrightImport.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("/Portals/0/NBStore/images/")]
-        public string ImageBaseUrl {
-            get {
-                return ((string)(this["ImageBaseUrl"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("C:\\Src\\DNN\\Portals\\0\\NBStore\\images")]
         public string ImageBasePath {
             get {
@@ -43,7 +34,16 @@ namespace ZIndex.DNN.NBrightImport.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        [global::System.Configuration.DefaultSettingValueAttribute("/Portals/0/NBStore/images/AAA")]
+        public string ImageBaseUrl {
+            get {
+                return ((string)(this["ImageBaseUrl"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("4")]
         public decimal UnitCost {
             get {
                 return ((decimal)(this["UnitCost"]));
@@ -52,7 +52,7 @@ namespace ZIndex.DNN.NBrightImport.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("fr-FR")]
+        [global::System.Configuration.DefaultSettingValueAttribute("fr-BE")]
         public string Culture {
             get {
                 return ((string)(this["Culture"]));

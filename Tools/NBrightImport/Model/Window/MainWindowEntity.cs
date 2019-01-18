@@ -44,6 +44,7 @@ namespace ZIndex.DNN.NBrightImport.Model.Window
         public string ImageBasePath { get; set; }
         public string ImageBaseUrl { get; set; }
         public string Culture { get; set; }
+        public bool GenerateZip { get; set; }
 
         public override string ToString()
         {

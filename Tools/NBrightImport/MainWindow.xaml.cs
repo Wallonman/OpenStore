@@ -1,12 +1,17 @@
 ﻿using System;
 using System.Globalization;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
+using System.Windows.Input;
+using System.Windows.Threading;
 using ZIndex.DNN.NBrightImport.Import;
 using ZIndex.DNN.NBrightImport.Logger;
-using ZIndex.DNN.NBrightImport.Model;
 using ZIndex.DNN.NBrightImport.Model.Window;
 using ZIndex.DNN.NBrightImport.Properties;
+using Application = System.Windows.Application;
+using Cursors = System.Windows.Forms.Cursors;
 
 namespace ZIndex.DNN.NBrightImport
 {
@@ -28,6 +33,7 @@ namespace ZIndex.DNN.NBrightImport
                 Culture = Settings.Default.Culture,
                 ImageBasePath = Settings.Default.ImageBasePath,
                 ImageBaseUrl = Settings.Default.ImageBaseUrl,
+                GenerateZip = true,
             };
         }
 
@@ -55,23 +61,7 @@ namespace ZIndex.DNN.NBrightImport
         {
             try
             {
-                AppendStatusText($"--- Début de la génération à {DateTime.Now} ---------");
-                AppendStatusText(_entity.ToString());
-
-                var importManager = new ImportManager(new StoreParser(new CategoriesParser(), new ProductsParser()),
-                    new ImportV4FileGenerator(new Converter()), new ZipFileGenerator());
-
-                // todo: put this is a separate thread
-                importManager.GenerateImportFiles(_entity.SrcPath
-                    , CultureInfo.GetCultureInfo(_entity.Culture)
-                    , _entity.ImageBasePath // imageBasePath
-                    , _entity.ImageBaseUrl // imageBaseUrl
-                    , decimal.Parse(_entity.UnitCost) // unitCost
-                    , CbGenerateZip.IsChecked.GetValueOrDefault()
-                );
-
-                AppendStatusText($"Fichiers Xml et Zip créés dans {_entity.SrcPath}");
-                AppendStatusText($"--- Fin de la génération à {DateTime.Now} ---------");
+                new Thread(Generate).Start();
             }
             catch (Exception ex)
             {
@@ -80,6 +70,35 @@ namespace ZIndex.DNN.NBrightImport
             }
         }
 
+        private void Generate()
+        {
+            Application.Current.Dispatcher.Invoke(() => Mouse.OverrideCursor = System.Windows.Input.Cursors.Wait);
+
+            AppendStatusText($"--- Début de la génération à {DateTime.Now} ---------");
+            AppendStatusText(_entity.ToString());
+
+
+            var importManager = new ImportManager(new StoreParser(new CategoriesParser(), new ProductsParser()),
+                new ImportV4FileGenerator(new Converter()), new ZipFileGenerator());
+
+            importManager.GenerateImportFiles(_entity.SrcPath
+                , CultureInfo.GetCultureInfo(_entity.Culture)
+                , _entity.ImageBasePath // imageBasePath
+                , _entity.ImageBaseUrl // imageBaseUrl
+                , decimal.Parse(_entity.UnitCost) // unitCost
+                , _entity.GenerateZip
+            );
+
+
+            AppendStatusText($"Fichiers Xml et Zip créés dans {_entity.SrcPath}");
+            AppendStatusText($"--- Fin de la génération à {DateTime.Now} ---------");
+
+            Application.Current.Dispatcher.Invoke(() => Mouse.OverrideCursor = null);
+
+        }
+
+
+
         /// <summary>
         ///     Add the text to the status panel with a carriage return by default
         /// </summary>
@@ -87,7 +106,10 @@ namespace ZIndex.DNN.NBrightImport
         /// <param name="addCarriageReturn"></param>
         private void AppendStatusText(string text, bool addCarriageReturn = true)
         {
-            TbStatus.Text += text + (addCarriageReturn ? "\n" : string.Empty);
+            Dispatcher.BeginInvoke(
+                new Action(() => { TbStatus.Text += text + (addCarriageReturn ? "\n" : string.Empty); }),
+                DispatcherPriority.SystemIdle
+            );
         }
     }
 }

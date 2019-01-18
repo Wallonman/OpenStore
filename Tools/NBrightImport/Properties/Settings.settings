@@ -1,18 +1,18 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="NBStoreConnect.Properties" GeneratedClassName="Settings">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ZIndex.DNN.NBrightImport.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="ImageBaseUrl" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">/Portals/0/NBStore/images/</Value>
-    </Setting>
     <Setting Name="ImageBasePath" Type="System.String" Scope="Application">
       <Value Profile="(Default)">C:\Src\DNN\Portals\0\NBStore\images</Value>
     </Setting>
+    <Setting Name="ImageBaseUrl" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">/Portals/0/NBStore/images/AAA</Value>
+    </Setting>
     <Setting Name="UnitCost" Type="System.Decimal" Scope="Application">
-      <Value Profile="(Default)">1</Value>
+      <Value Profile="(Default)">4</Value>
     </Setting>
     <Setting Name="Culture" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">fr-FR</Value>
+      <Value Profile="(Default)">fr-BE</Value>
     </Setting>
   </Settings>
 </SettingsFile>

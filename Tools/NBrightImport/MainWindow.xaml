@@ -70,16 +70,16 @@
                 <Binding Path="Culture" />
             </Label>
             <Label Grid.Column="0" Grid.Row="8" Content="Chemin de base des images" />
-            <Label Grid.Column="1" Grid.Row="8" >
+            <Label Grid.Column="1" Grid.Row="8" Grid.ColumnSpan="2" Width="Auto" >
                 <Binding Path="ImageBasePath" />
             </Label>
             <Label Grid.Column="0" Grid.Row="9" Content="Url de base des images" />
-            <Label Grid.Column="1" Grid.Row="9" >
+            <Label Grid.Column="1" Grid.Row="9" Width="Auto" >
                 <Binding Path="ImageBaseUrl" />
             </Label>
             <Label Grid.Column="0" Grid.Row="10" Content="Générer le fichier d'images (zip)" />
             <Label Grid.Column="1" Grid.Row="10" >
-                <CheckBox x:Name="CbGenerateZip" IsChecked="True"></CheckBox>
+                <CheckBox x:Name="CbGenerateZip" IsChecked="{Binding Path=GenerateZip}"></CheckBox>
             </Label>
 
         </Grid>

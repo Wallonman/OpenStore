@@ -19,7 +19,7 @@ namespace ZIndex.DNN.NBrightImport.Import
         }
 
         public void GenerateImportFiles(string rootPath, CultureInfo culture, string imageBasePath, string imageBaseUrl,
-            decimal productUnitCost)
+            decimal productUnitCost, bool generateZip)
         {
             var store = _storeParser.Parse(rootPath, culture, imageBasePath, imageBaseUrl, productUnitCost);
             var xmlFilename = Path.Combine(rootPath, string.Concat(Path.GetFileNameWithoutExtension(rootPath), ".xml"));
@@ -31,8 +31,15 @@ namespace ZIndex.DNN.NBrightImport.Import
                 _importFileGenerator.Generate(writer, store);
             }
 
-            _log.Info("Generating zip file {0}", zipFilename);
-            _zipFileGenerator.Zip(zipFilename, rootPath, "*.jpg", true);
+            if (generateZip)
+            {
+                _log.Info("Generating zip file {0}", zipFilename);
+                _zipFileGenerator.Zip(zipFilename, rootPath, "*.jpg", true);
+            }
+            else
+            {
+                _log.Info("Zip file generation skipped");
+            }
 
         }
     }

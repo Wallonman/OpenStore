@@ -67,6 +67,7 @@ namespace ZIndex.DNN.NBrightImport
                     , _entity.ImageBasePath // imageBasePath
                     , _entity.ImageBaseUrl // imageBaseUrl
                     , decimal.Parse(_entity.UnitCost) // unitCost
+                    , CbGenerateZip.IsChecked.GetValueOrDefault()
                 );
 
                 AppendStatusText($"Fichiers Xml et Zip créés dans {_entity.SrcPath}");

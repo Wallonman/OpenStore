@@ -144,8 +144,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Extensions\CommonExtensions.cs" />
-    <Compile Include="Import\ISimpleProduct.cs" />
-    <Compile Include="Import\SimpleProduct.cs" />
     <Page Include="MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>XamlIntelliSenseFileGenerator</Generator>

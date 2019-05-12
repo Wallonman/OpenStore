@@ -129,6 +129,15 @@
   <data name="buyqty.Text" xml:space="preserve">
     <value>Quantity of </value>
   </data>
+  <data name="buyqtyfrom.Text" xml:space="preserve">
+    <value>From Quantity</value>
+  </data>
+  <data name="buyqtyto.Text" xml:space="preserve">
+    <value>To Quantity</value>
+  </data>
+  <data name="cartpromoapply.Text" xml:space="preserve">
+    <value>Discount to apply</value>
+  </data>
   <data name="code.Text" xml:space="preserve">
     <value>Code</value>
   </data>
